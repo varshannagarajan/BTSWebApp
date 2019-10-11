@@ -8,6 +8,9 @@ import { EventCreateComponent } from './event-create/event-create.component';
 import { EventReadComponent } from './event-read/event-read.component';
 import { EventUpdateComponent } from './event-update/event-update.component';
 import { EventDeleteComponent } from './event-delete/event-delete.component';
+import { UserCreateComponent } from './user-create/user-create.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 import { InvalidRouteComponent } from './invalid-route/invalid-route.component';
 import { TokenViewComponent } from './token-view/token-view.component';
 import { LoginComponent } from './login/login.component';
@@ -19,6 +22,9 @@ import { LoginComponent } from './login/login.component';
     EventReadComponent,
     EventUpdateComponent,
     EventDeleteComponent,
+    UserCreateComponent,
+    NavbarComponent,
+    HomeComponent
     InvalidRouteComponent,
     TokenViewComponent,
     LoginComponent
