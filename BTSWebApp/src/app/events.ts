@@ -2,6 +2,7 @@ import { Address } from './address'
 import { Contact } from './contact';
 
 export class Events {
+    _id: String;
     ev_name: String;
     ev_address: Address;
     ev_category: String[];

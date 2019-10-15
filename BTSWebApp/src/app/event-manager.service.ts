@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
 import { Events } from './events';
 import { Observable } from 'rxjs'
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +33,12 @@ export class EventManagerService {
     return this.currentEvent;
   }
 
-  eventSet(e:Events):void{
-      this.currentEvent=e;
-      console.log(this.currentEvent);
+  // Update
+  eventsUpdate(e:Events){
+    return this.http.put(`${this.url}/${e._id}`, e);
   }
+
+  eventSet(e:Events):void{
+    this.currentEvent=e;
+}
 }

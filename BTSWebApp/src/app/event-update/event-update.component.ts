@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms'
 import { Events } from '../events';
+import { EventManagerService } from '../event-manager.service'
 
 @Component({
   selector: 'app-event-update',
@@ -12,32 +11,26 @@ import { Events } from '../events';
 })
 export class EventUpdateComponent implements OnInit {
 
-  credentials: Events;
-  loginError: string;
+  id: string;
+  event: Events;
 
-
-  constructor(
-    
-    private router: Router,
-    private a: AuthService,
-    private jwtHelper: JwtHelperService
-  ) {
-
-    this.credentials = new Events();
-    this.credentials.ev_name = '';
-    this.credentials.ev_description = '';
-    this.credentials.ev_company = '';
-
-    this.loginError = '';
-  }
+  constructor(private route: ActivatedRoute, private m: EventManagerService) { }
 
   ngOnInit() {
+    let id = this.route.snapshot.params['_id'];
+    this.m.eventsGetById(id).subscribe((e)=> {
+      console.log(e);
+      this.event = e;
+    });
   }
 
-  // Methods
-  updateEvent(): void{
-    this.a.updateEv(this.credentials).subscribe();
-    //console.log(this.credentials);
+  ngDoCheck(){
+    this.m.eventSet(this.event);
+    console.log(this.event);
+  }
+
+  onSubmit(){
+    this.m.eventsUpdate(this.event);
   }
 
 }
