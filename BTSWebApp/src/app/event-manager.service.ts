@@ -29,16 +29,26 @@ export class EventManagerService {
     return this.http.get<Events>(`${this.url}/${id}`);
   }
 
-  eventsGet():Events{
+  getCurrentEvents():Events{
     return this.currentEvent;
+  }
+
+  eventSet(e:Events):void{
+    this.currentEvent=e;
   }
 
   // Update
   eventsUpdate(e:Events){
     return this.http.put(`${this.url}/${e._id}`, e);
   }
+  
+  //Create
+  eventsCreate(e:Events){
+    return this.http.post<any>(`${this.url}`, e);
+  }
 
-  eventSet(e:Events):void{
-    this.currentEvent=e;
-}
+  //Delete
+  eventsDelete(e:Events){
+    return this.http.delete(`${this.url}/${e._id}`);
+  }
 }

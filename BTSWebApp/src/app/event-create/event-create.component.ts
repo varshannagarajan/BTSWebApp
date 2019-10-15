@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms'
 import { Events } from '../events';
+import { EventManagerService } from '../event-manager.service'
+import { UserService } from '../user.service'
+import { User } from '../user';
 
 @Component({
   selector: 'app-event-create',
@@ -12,32 +13,26 @@ import { Events } from '../events';
 })
 export class EventCreateComponent implements OnInit {
 
-  credentials: Events;
+  currentUser: User;
+  newEvent: Events;
   loginError: string;
 
 
-  constructor(
-    
-    private router: Router,
-    private a: AuthService,
-    private jwtHelper: JwtHelperService
-  ) {
-
-    this.credentials = new Events();
-    this.credentials.ev_name = '';
-    this.credentials.ev_description = '';
-    this.credentials.ev_company = '';
-
-    this.loginError = '';
+  constructor(private route: ActivatedRoute, private em: EventManagerService, private sm: UserService) { 
+    this.newEvent = new Events();
+    //set event empty
   }
 
   ngOnInit() {
+    this.currentUser=this.sm.getCurrentUser();
   }
 
   // Methods
-  createEvent(): void{
-    this.a.createEv(this.credentials).subscribe();
-    //console.log(this.credentials);
+  onSubmit(){
+    this.newEvent.ev_coordinator=this.currentUser.user_email;
+    this.em.eventsCreate(this.newEvent);
   }
+
+
 
 }
