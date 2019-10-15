@@ -1,0 +1,43 @@
+<div class="row">
+    <h4>Update Event</h4>
+    <div class='col-md-8 col-sm-12'>
+  
+      <form (ngSubmit)='onSubmit()' #f='ngForm'>
+  
+        <!-- Edit to make this an Angular template-driven form -->
+        <div class="form-group">
+            <label class="control-label" for="ev_ID">ID:</label>
+            <input class="form-control" id="ev_ID" name="ev_ID" [(ngModel)]="credentials._id">
+          </div>
+
+        <div class="form-group">
+          <label class="control-label" for="ev_name">Event Id:</label>
+          <input class="form-control" id="ev_name" name="ev_name" minlength="3" maxlength="30" [(ngModel)]="credentials.ev_name" required autofocus>
+        </div>
+  
+        <div class="form-group">
+          <label class="control-label" for="ev_company">Company:</label>
+          <input class="form-control" id="ev_company" name="ev_company" [(ngModel)]="credentials.ev_company">
+        </div>
+  
+        <div class="form-group">
+          <label class="control-label" for="ev_description">Description:</label>
+          <input type="password" class="form-control" id="ev_description" name="ev_description"  [(ngModel)]="credentials.ev_description">
+        </div>
+  
+        <a class="btn btn-default" routerLink='/home'>Back to home</a>&nbsp;&nbsp;
+        <!-- <button class="btn btn-default" (click)='logout()'>Logout</button> -->
+        <button class="btn-success" (click)='updateEvent()'>Update</button>&nbsp;&nbsp;
+        
+        
+        <span *ngIf='loginError.length>0' class="text-danger">{{ loginError }}</span>
+      </form>
+  
+      
+  
+    </div>
+  </div>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
