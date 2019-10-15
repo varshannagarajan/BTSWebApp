@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,9 @@ import { AuthService } from './auth.service';
 import { GuardAuthService } from './guard-auth.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptTokenService } from "./intercept-token.service";
+import { EventReadComponent } from './event-read/event-read.component';
+import { EventUpdateComponent } from './event-update/event-update.component';
+import { EventDeleteComponent } from './event-delete/event-delete.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -29,7 +33,13 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     EventCreateComponent,
+    EventReadComponent,
+    EventUpdateComponent,
+    EventDeleteComponent,
     UserCreateComponent,
+    UserReadComponent,
+    UserUpdateComponent,
+    UserDeleteComponent,
     NavbarComponent,
     HomeComponent,
     InvalidRouteComponent,
@@ -41,6 +51,7 @@ export function tokenGetter() {
     UserActivateComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
