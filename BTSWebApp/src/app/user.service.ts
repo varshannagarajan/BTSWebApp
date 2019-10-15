@@ -30,4 +30,8 @@ export class UserService {
   deleteUser(credentials: Credentials) {
     return this.http.delete(`${this.urlReqres}/${credentials.user_email}`);
   }
+
+  getCurrentUser():User{
+    return this.user;
+  }
 }

@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ActivatedRoute } from '@angular/router';
+import { EventManagerService } from '../event-manager.service'
 import { NgForm } from '@angular/forms'
 import { Events } from '../events';
+import { User } from '../user';
 
 @Component({
   selector: 'app-event-delete',
@@ -12,31 +15,21 @@ import { Events } from '../events';
 })
 export class EventDeleteComponent implements OnInit {
 
-  credentials: Events;
+  currentUser: User;
+  event: Events;
   loginError: string;
 
 
-  constructor(
-    
-    private router: Router,
-    private a: AuthService,
-    private jwtHelper: JwtHelperService
-  ) {
+  constructor(private route: ActivatedRoute, private m: EventManagerService) { 
 
-    this.credentials = new Events();
-    this.credentials.ev_name = '';
-    this.credentials.ev_description = '';
-    this.credentials.ev_company = '';
-
-    this.loginError = '';
   }
 
   ngOnInit() {
+    event=this.m.getCurrentEvents();
   }
 
   // Methods
-  deleteEvent(): void{
-    this.a.deleteEv(this.credentials).subscribe();
-    //console.log(this.credentials);
+  onSubmit(){
+    this.m.eventsDelete(this.event);
   }
 }

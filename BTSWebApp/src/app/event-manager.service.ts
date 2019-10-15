@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
 import { Events } from './events';
 import { Observable } from 'rxjs'
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -27,12 +29,26 @@ export class EventManagerService {
     return this.http.get<Events>(`${this.url}/${id}`);
   }
 
-  eventsGet():Events{
+  getCurrentEvents():Events{
     return this.currentEvent;
   }
 
   eventSet(e:Events):void{
-      this.currentEvent=e;
-      console.log(this.currentEvent);
+    this.currentEvent=e;
+  }
+
+  // Update
+  eventsUpdate(e:Events){
+    return this.http.put(`${this.url}/${e._id}`, e);
+  }
+  
+  //Create
+  eventsCreate(e:Events){
+    return this.http.post<any>(`${this.url}`, e);
+  }
+
+  //Delete
+  eventsDelete(e:Events){
+    return this.http.delete(`${this.url}/${e._id}`);
   }
 }
