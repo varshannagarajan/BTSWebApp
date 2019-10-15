@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { map } from 'rxjs/operators';
-import { Credentials } from './login/login.component';
+import { Credentials } from './credentials';
+import { User } from './user';
 
 @Injectable()
 export class AuthService {
 
   // Properties
 
-  private url: string = 'webservice website here';
+  private url = 'https://btsgroup11webservices.herokuapp.com/';
 
   // Initialization
 
@@ -49,11 +50,11 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/api/useraccounts/login`, credentials);
   }
 
-  create(credentials: Credentials): Observable<any>{
-    return this.http.post<any>(`${this.url}/api/useraccounts/create`, credentials);
+  create(user: User): Observable<any> {
+    return this.http.post<any>(`${this.url}/api/useraccounts/create`, user);
   }
 
-  activate(credentials: Credentials): Observable<any>{
+  activate(credentials: Credentials): Observable<any> {
     return this.http.post<any>(`${this.url}/api/useraccounts/activate`, credentials);
   }
 }
