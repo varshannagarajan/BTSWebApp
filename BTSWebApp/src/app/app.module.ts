@@ -16,6 +16,10 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { UserReadComponent } from './user-read/user-read.component';
 import { UserActivateComponent } from './user-activate/user-activate.component';
+import { AuthService } from './auth.service';
+import { GuardAuthService } from './guard-auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptTokenService } from "./intercept-token.service";
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -47,7 +51,15 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    GuardAuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptTokenService,
+      multi: true
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
