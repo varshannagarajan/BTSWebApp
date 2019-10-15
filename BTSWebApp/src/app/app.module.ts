@@ -11,6 +11,10 @@ import { HomeComponent } from './home/home.component';
 import { InvalidRouteComponent } from './invalid-route/invalid-route.component';
 import { TokenViewComponent } from './token-view/token-view.component';
 import { LoginComponent } from './login/login.component';
+import { UserUpdateComponent } from './user-update/user-update.component';
+import { UserDeleteComponent } from './user-delete/user-delete.component';
+import { UserReadComponent } from './user-read/user-read.component';
+import { UserActivateComponent } from './user-activate/user-activate.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     InvalidRouteComponent,
     TokenViewComponent,
-    LoginComponent
+    LoginComponent,
+    UserUpdateComponent,
+    UserDeleteComponent,
+    UserReadComponent,
+    UserActivateComponent
   ],
   imports: [
     BrowserModule,

@@ -3,18 +3,16 @@ import { Router } from '@angular/router';
 import { User } from '../user';
 import { Contact } from '../contact';
 import { AuthService } from '../auth.service';
+import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-user-create',
-  templateUrl: './user-create.component.html',
-  styles: []
+  selector: 'app-user-update',
+  templateUrl: './user-update.component.html',
+  styleUrls: ['./user-update.component.css']
 })
-
-export class UserCreateComponent implements OnInit {
+export class UserUpdateComponent implements OnInit {
   user: User;
-  createError: string;
-
-  constructor(private a: AuthService, private router: Router) {
+  constructor(private u: UserService, private router: Router) {
     this.user = new User();
     this.user.user_email = '';
     this.user.user_firstName = '';
@@ -26,20 +24,12 @@ export class UserCreateComponent implements OnInit {
     this.user.user_favourites = [''];
     this.user.user_eventsList = [''];
     this.user.user_contactInfo = new Contact();
-
   }
 
   ngOnInit() {}
-
+  // Methods
   onSubmit(): void {
-    this.a.create(this.user).subscribe(
-      data => {
-        console.log(data);
-        this.router.navigate(['/login']);
-      },
-      error => {
-        this.createError = error;
-      }
-    );
+    this.u.updateUser(this.user).subscribe();
+    // console.log(this.credentials);
   }
 }
