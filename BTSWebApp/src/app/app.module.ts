@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,14 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { UserReadComponent } from './user-read/user-read.component';
 import { UserActivateComponent } from './user-activate/user-activate.component';
+import { AuthService } from './auth.service';
+import { GuardAuthService } from './guard-auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptTokenService } from "./intercept-token.service";
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -34,9 +43,23 @@ import { UserActivateComponent } from './user-activate/user-activate.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        authScheme: 'JWT'
+      }
+    })
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    GuardAuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptTokenService,
+      multi: true
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
