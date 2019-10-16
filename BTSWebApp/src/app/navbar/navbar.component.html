@@ -1,20 +1,14 @@
 <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" routerLink="">mesh - ENTER TAG LINE HERE</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li>
-          <a
-            routerLink="/"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">Home</a>
-        </li>
-        <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-        <li><a routerLink="/userActivate" routerLinkActive="active">Activate</a></li>
-        <li><a routerLink="/eventCreate" routerLinkActive="active">Create New Event</a></li>
-        <li><a routerLink="/invalidRoute" routerLinkActive="active">Invalid Route</a></li>
-      </ul>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="">mesh</a>
     </div>
-  </nav>
-  
+    <ul class="nav navbar-nav">
+
+      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li><a routerLink="/userActivate" routerLinkActive="active">Activate Account</a></li>
+      <li><a routerLink="/userCreate" routerLinkActive="active">Create Account</a></li>
+      <li><a routerLink="/eventCreate" routerLinkActive="active">New Event</a></li>
+    </ul>
+  </div>
+</nav>

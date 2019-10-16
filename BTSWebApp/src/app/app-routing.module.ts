@@ -19,7 +19,7 @@ import { GuardAuthService } from './guard-auth.service';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
-  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'eventCreate', component: EventCreateComponent},
   { path: 'eventRead', component: EventReadComponent},
   { path: 'eventUpdate', component: EventUpdateComponent},
