@@ -47,14 +47,14 @@ export class AuthService {
 
     // Attempt to login
     // ##### EDIT the following to match the path to your web API login resource
-    return this.http.post<any>(`${this.url}/api/useraccounts/login`, credentials);
+    return this.http.post<any>(`${this.url}api/users/login`, credentials);
   }
 
   create(user: User): Observable<any> {
-    return this.http.post<any>(`${this.url}/api/useraccounts/create`, user);
+    return this.http.post<any>(`${this.url}api/users/create`, user);
   }
 
   activate(credentials: Credentials): Observable<any> {
-    return this.http.post<any>(`${this.url}/api/useraccounts/activate`, credentials);
+    return this.http.post<any>(`${this.url}api/users/activate`, credentials);
   }
 }

@@ -19,7 +19,7 @@ export class UserService {
     return this.http.get<User[]>(`${this.urlReqres}`);
   }
 
-  reqresUserGetById(id: number): Observable<User> {
+  reqresUserGetById(id: String): Observable<User> {
     return this.http.get<User>(`${this.urlReqres}/${id}`);
   }
 

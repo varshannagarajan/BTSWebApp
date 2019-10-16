@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Credentials } from '../credentials';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +22,7 @@ export class LoginComponent implements OnInit {
   // Initialization
 
   constructor(
-
+    private m: UserService,
     private router: Router,
     private a: AuthService,
     private jwtHelper: JwtHelperService
@@ -37,15 +40,21 @@ export class LoginComponent implements OnInit {
 
   // Methods
 
-  onSubmit(): void {
+  onSubmit(f: NgForm): void {
 
     console.log(this.credentials);
 
-    // Complete this method...
-
-    // Clear the existing token
-
+    // Clear the existing toke
+    localStorage.removeItem('access-token');
     // Attempt to login, by calling the login method of the auth service
+    // Complete this method...
+    this.a.login(this.credentials).subscribe(c => {
+      localStorage.setItem('access_token', c.token);
+      console.log(c);
+      let tokenDecoded = this.jwtHelper.decodeToken(c.token);
+      this.router.navigate(['/userRead', tokenDecoded._id]);
+    });
+
     // If successful...
     //   Save the token in the browser's local storage
     //   Navigate to a landing/info view (home page?)
@@ -53,13 +62,7 @@ export class LoginComponent implements OnInit {
     //   console.log the error
     //   Write an info message in the loginError property
 
+
   }
 
-}
-
-// User name and password
-
-export class Credentials {
-  user_email: string;
-  user_password: string;
 }

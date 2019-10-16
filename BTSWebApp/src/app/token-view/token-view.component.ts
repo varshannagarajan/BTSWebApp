@@ -27,7 +27,7 @@ export class TokenViewComponent {
       this.tokenIssuedTimestamp = new Date(this.tokenDecoded.iat * 1000);
     } else {
       this.tokenRaw = '(no token)';
-      this.tokenDecoded = { userName: '', fullName: '', role: '' };
+      this.tokenDecoded = { user_email: '', user_firstName: '' };
       this.tokenIssuedTimestamp = '';
     }
   }

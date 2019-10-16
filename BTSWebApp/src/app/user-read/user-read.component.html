@@ -1,12 +1,15 @@
-<div class="container">
-  <div class="table-responsive">
-    <div class="col-md-6">
-      <h4>User Name</h4>
-      <p>{{ user.user_email }}</p>
-      <h4>First Name</h4>
-      <p>{{ user.user_firstName }}</p>
-      <h4>Last Name</h4>
-      <p>{{ user.user_lastName }}</p>
+<div class="col-md-9" *ngIf="user">
+  <div class="container">
+    <div class="table-responsive">
+      <div class="col-md-6">
+        <h4>User Name</h4>
+        <p>{{ user.user_email }}</p>
+        <h4>First Name</h4>
+        <p>{{ user.user_firstName }}</p>
+        <h4>Last Name</h4>
+        <p>{{ user.user_lastName }}</p>
+      </div>
     </div>
   </div>
+  <div class="row"></div>
 </div>

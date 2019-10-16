@@ -25,7 +25,7 @@ export class EventDeleteComponent implements OnInit {
   }
 
   ngOnInit() {
-    event=this.m.getCurrentEvents();
+    this.event=this.m.getCurrentEvents();
   }
 
   // Methods

@@ -20,6 +20,7 @@ export class EventCreateComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private em: EventManagerService, private sm: UserService) { 
     this.newEvent = new Events();
+    this.newEvent.ev_name = "";
     //set event empty
   }
 
@@ -28,11 +29,8 @@ export class EventCreateComponent implements OnInit {
   }
 
   // Methods
-  onSubmit(){
+  onSubmit(f: NgForm) : void {
     this.newEvent.ev_coordinator=this.currentUser.user_email;
     this.em.eventsCreate(this.newEvent);
   }
-
-
-
 }
