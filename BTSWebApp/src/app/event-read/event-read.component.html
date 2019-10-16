@@ -1,18 +1,30 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-9" *ngIf="event">
-    <h2>Event detail - {{ event.ev_name }} <button routerLink="/students">Back To List</button></h2>
+    <h2>Event Details - {{ event.ev_name }}</h2>
     <ul style="list-style-type:none;">
       <li>
         <table>
           <tbody class="tableBody">
             <tr>
-              <td>Event ID</td>
+              <td>Event ID: </td>
               <td>{{ event._id }}</td>
             </tr>
             <tr>
-              <td>Description</td>
+              <td>Company: </td>
+              <td>{{ event.ev_company }}</td>
+            </tr>
+            <tr>
+              <td>Description: </td>
               <td>{{ event.ev_description }}</td>
+            </tr>
+            <tr>
+              <td>Address: </td>
+              <td>{{ event.ev_address.street }} </td>
+              <td>{{ event.ev_address.postalCode }} </td>
+              <td>{{ event.ev_address.city }} </td>
+              <td>{{ event.ev_address.province }} </td>
+              <td>{{ event.ev_address.country }} </td>
             </tr>
           </tbody>
         </table>
