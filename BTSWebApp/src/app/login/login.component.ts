@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   // Methods
 
-  onSubmit(): void {
+  onSubmit(f: NgForm): void {
 
     console.log(this.credentials);
 
@@ -47,23 +48,13 @@ export class LoginComponent implements OnInit {
     localStorage.removeItem('access-token');
     // Attempt to login, by calling the login method of the auth service
     // Complete this method...
-    this.a.login(this.credentials).subscribe(
-      (data) => {
-        localStorage.setItem('access_token', this.a.getToken());
-        let tokenDecoded = this.jwtHelper.decodeToken(data.token);
-        this.router.navigate(["/userRead", tokenDecoded._id]);
-        /*this.m.reqresUserGetById(tokenDecoded._id).subscribe((user) => {
-          this.m.user = user;
-          this.router.navigate(["/users/userRead"], tokenDecoded._id);
-        });*/
-        
-        //this.router.navigate(['/students/username/', tokenDecoded.userName]);
-      
-      }, error => {
-        console.log(error)
-        this.loginError = error;
-      }
-    );
+    this.a.login(this.credentials).subscribe(c => {
+      localStorage.setItem('access_token', c.token);
+      console.log(c);
+      let tokenDecoded = this.jwtHelper.decodeToken(c.token);
+      this.router.navigate(['/userRead', tokenDecoded._id]);
+    });
+
     // If successful...
     //   Save the token in the browser's local storage
     //   Navigate to a landing/info view (home page?)
