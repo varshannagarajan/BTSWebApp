@@ -1,48 +1,30 @@
 <div class="row">
-  <h4>Welcome to mesh!</h4>
-  <h5>Enter the following information to create an account</h5>
+  <div class="col-md-2"></div>
   <div class="col-md-8 col-sm-12">
+    <h4>Welcome to mesh!</h4>
+    <h5>Enter the following information to create an account</h5>
     <form (ngSubmit)="onSubmit()" #f="ngForm">
       <!-- Edit to make this an Angular template-driven form -->
 
       <div class="form-group">
         <label class="control-label" for="firstName">First Name:</label>
-        <input
-          class="form-control"
-          id="user_firstName"
-          [(ngModel)]="user.user_firstName"
-          name="firstName"
-          required
-        />
+        <input class="form-control" id="user_firstName" [(ngModel)]="user.user_firstName" name="firstName" required />
       </div>
 
       <div class="form-group">
         <label class="control-label" for="lastName">Last Name:</label>
-        <input
-          class="form-control"
-          id="user_lastName"
-          [(ngModel)]="user.user_lastName"
-          name="lastName"
-          required
-        />
+        <input class="form-control" id="user_lastName" [(ngModel)]="user.user_lastName" name="lastName" required />
       </div>
 
       <div class="form-group">
         <label class="control-label" for="bio">Biography:</label>
-        <input
-          class="form-control"
-          id="user_bio"
-          [(ngModel)]="user.user_bio"
-          name="bio"
-        />
+        <input class="form-control" id="user_bio" [(ngModel)]="user.user_bio" name="bio" />
       </div>
 
       <a class="btn btn-default" routerLink="/home">Back to home</a>
       <!-- <button class="btn btn-default" (click)='logout()'>Logout</button> -->
       <button class="btn btn-primary" type="submit">Create</button>&nbsp;&nbsp;
-      <span *ngIf="createError.length > 0" class="text-danger">{{
-        createError
-      }}</span>
+      <span *ngIf="createError.length > 0" class="text-danger">{{ createError }}</span>
     </form>
   </div>
 </div>
