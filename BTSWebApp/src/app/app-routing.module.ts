@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'eventCreate', component: EventCreateComponent},
-  { path: 'eventRead', component: EventReadComponent},
+  { path: 'eventRead/:_id', component: EventReadComponent},
   { path: 'eventUpdate', component: EventUpdateComponent},
   { path: 'eventDelete', component: EventDeleteComponent},
   { path: 'userActivate', component: UserActivateComponent},

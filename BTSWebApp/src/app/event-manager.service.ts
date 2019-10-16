@@ -15,7 +15,7 @@ export class EventManagerService {
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
-  private url: String = 'https://blooming-woodland-73142.herokuapp.com/api/events';
+  private url: String = 'https://btsgroup11webservices.herokuapp.com/api/events';
   //private url: String = "http://localhost:8080/api/students";
   
 
