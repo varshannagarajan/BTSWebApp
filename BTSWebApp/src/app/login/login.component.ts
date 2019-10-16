@@ -13,7 +13,6 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   // Properties
 
   credentials: Credentials;
@@ -21,13 +20,7 @@ export class LoginComponent implements OnInit {
 
   // Initialization
 
-  constructor(
-    private m: UserService,
-    private router: Router,
-    private a: AuthService,
-    private jwtHelper: JwtHelperService
-  ) {
-
+  constructor(private m: UserService, private router: Router, private a: AuthService, private jwtHelper: JwtHelperService) {
     this.credentials = new Credentials();
     this.credentials.user_email = '';
     this.credentials.user_password = '';
@@ -35,13 +28,11 @@ export class LoginComponent implements OnInit {
     this.loginError = '';
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   // Methods
 
-  onSubmit(f: NgForm): void {
-
+  onSubmit(): void {
     console.log(this.credentials);
 
     // Clear the existing toke
@@ -61,8 +52,5 @@ export class LoginComponent implements OnInit {
     // If not successful...
     //   console.log the error
     //   Write an info message in the loginError property
-
-
   }
-
 }
