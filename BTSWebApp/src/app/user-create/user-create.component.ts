@@ -35,7 +35,7 @@ export class UserCreateComponent implements OnInit {
     this.a.create(this.user).subscribe(
       data => {
         console.log(data);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/userActivate']);
       },
       error => {
         this.createError = error;
