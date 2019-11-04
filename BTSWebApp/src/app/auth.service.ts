@@ -51,7 +51,7 @@ export class AuthService {
   }
 
   create(user: User): Observable<any> {
-    return this.http.post<any>(`${this.url}api/users/create`, user);
+    return this.http.post<any>(`${this.url}api/users`, user);
   }
 
   activate(credentials: Credentials): Observable<any> {
