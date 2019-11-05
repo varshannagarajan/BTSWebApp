@@ -17,6 +17,8 @@ import { UserActivateComponent } from './user-activate/user-activate.component';
 import { GuardAuthService } from './guard-auth.service';
 import { UserContactsComponent } from './user-contacts/user-contacts.component';
 import { EventRoomComponent } from './event-room/event-room.component';
+import { EventJoinComponent } from './event-join/event-join.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -25,6 +27,7 @@ const routes: Routes = [
   { path: 'eventRead/:_id', component: EventReadComponent},
   { path: 'eventUpdate/:_id', component: EventUpdateComponent},
   { path: 'eventDelete', component: EventDeleteComponent},
+  { path: 'eventJoin', component: EventJoinComponent},
   { path: 'userActivate', component: UserActivateComponent},
   { path: 'userCreate', component: UserCreateComponent},
   { path: 'userRead/:_id', component: UserReadComponent, canActivate: [GuardAuthService]},

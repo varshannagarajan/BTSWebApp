@@ -3,11 +3,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FormsModule } from '@angular/forms';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { GuardAuthService } from './guard-auth.service';
+import { InterceptTokenService } from './intercept-token.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EventCreateComponent } from './event-create/event-create.component';
-import { UserCreateComponent } from './user-create/user-create.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { InvalidRouteComponent } from './invalid-route/invalid-route.component';
@@ -17,15 +18,14 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { UserReadComponent } from './user-read/user-read.component';
 import { UserActivateComponent } from './user-activate/user-activate.component';
-import { AuthService } from './auth.service';
-import { GuardAuthService } from './guard-auth.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { InterceptTokenService } from "./intercept-token.service";
+import { UserCreateComponent } from './user-create/user-create.component';
 import { EventReadComponent } from './event-read/event-read.component';
 import { EventUpdateComponent } from './event-update/event-update.component';
 import { EventDeleteComponent } from './event-delete/event-delete.component';
 import { UserContactsComponent } from './user-contacts/user-contacts.component';
 import { EventRoomComponent } from './event-room/event-room.component';
+import { EventJoinComponent } from './event-join/event-join.component';
+import { EventCreateComponent } from './event-create/event-create.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -52,7 +52,8 @@ export function tokenGetter() {
     UserReadComponent,
     UserActivateComponent,
     UserContactsComponent,
-    EventRoomComponent
+    EventRoomComponent,
+    EventJoinComponent
   ],
   imports: [
     FormsModule,
@@ -61,7 +62,7 @@ export function tokenGetter() {
     AppRoutingModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
+        tokenGetter,
         authScheme: 'JWT'
       }
     })
