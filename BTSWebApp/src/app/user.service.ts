@@ -9,7 +9,7 @@ import { Credentials } from './credentials';
   providedIn: 'root'
 })
 export class UserService {
-  user: User;
+  currentUser: User;
   constructor(private http: HttpClient) { }
 
   private urlReqres =
@@ -32,6 +32,10 @@ export class UserService {
   }
 
   getCurrentUser():User{
-    return this.user;
+    return this.currentUser;
+  }
+
+  setCurrentUser(user: User){
+    this.currentUser = user;
   }
 }
