@@ -21,6 +21,7 @@ export class EventUpdateComponent implements OnInit {
     this.m.eventsGetById(id).subscribe((e)=> {
       console.log(e);
       this.event = e;
+      this.m.eventSet(this.event);
     });
   }
 
@@ -30,7 +31,9 @@ export class EventUpdateComponent implements OnInit {
   }
 
   onSubmit(){
-    this.m.eventsUpdate(this.event);
+    this.m.eventsUpdate(this.event).subscribe((data)=>{
+      console.log("Event Updated");
+    });
   }
 
 }

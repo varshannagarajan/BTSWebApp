@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'eventCreate', component: EventCreateComponent},
   { path: 'eventRead/:_id', component: EventReadComponent},
-  { path: 'eventUpdate', component: EventUpdateComponent},
+  { path: 'eventUpdate/:_id', component: EventUpdateComponent},
   { path: 'eventDelete', component: EventDeleteComponent},
   { path: 'userActivate', component: UserActivateComponent},
   { path: 'userCreate', component: UserCreateComponent},

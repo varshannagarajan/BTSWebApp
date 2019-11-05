@@ -18,19 +18,23 @@ export class EventCreateComponent implements OnInit {
   loginError: string;
 
 
-  constructor(private route: ActivatedRoute, private em: EventManagerService, private sm: UserService) { 
+  constructor(private route: ActivatedRoute, private em: EventManagerService, private um: UserService) { 
     this.newEvent = new Events();
     this.newEvent.ev_name = '';
     // set event empty
   }
 
   ngOnInit() {
-    this.currentUser = this.sm.getCurrentUser();
+    //this.currentUser = this.um.getCurrentUser();
+    //console.log(this.newEvent.ev_name);
+    //console.log(this.currentUser.user_firstName);
   }
 
   // Methods
   onSubmit(): void {
-    this.newEvent.ev_coordinator = this.currentUser.user_email;
-    this.em.eventsCreate(this.newEvent);
+    //this.newEvent.ev_coordinator = this.currentUser.user_email;
+    this.em.eventsCreate(this.newEvent).subscribe((data)=>{
+      console.log("Event Created");
+    });;
   }
 }

@@ -21,15 +21,17 @@ export class EventDeleteComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private m: EventManagerService) { 
-
+    this.event= new Events();
   }
 
   ngOnInit() {
-    this.event=this.m.getCurrentEvents();
+    //this.event=this.m.getCurrentEvents();
   }
 
   // Methods
   onSubmit(){
-    this.m.eventsDelete(this.event);
+    this.m.eventsDelete(this.event._id).subscribe((data)=>{
+      console.log("Event Deleted");
+    });
   }
 }

@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EventManagerService {
 
-  currentEvent: Events;
+  private currentEvent: Events;
     
 
 
@@ -33,7 +33,7 @@ export class EventManagerService {
     return this.currentEvent;
   }
 
-  eventSet(e:Events):void{
+  eventSet(e:Events){
     this.currentEvent=e;
   }
 
@@ -48,7 +48,7 @@ export class EventManagerService {
   }
 
   //Delete
-  eventsDelete(e:Events){
-    return this.http.delete(`${this.url}/${e._id}`);
+  eventsDelete(eid:String){
+    return this.http.delete(`${this.url}/${eid}`);
   }
 }

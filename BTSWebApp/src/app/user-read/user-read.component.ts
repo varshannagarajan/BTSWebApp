@@ -20,10 +20,11 @@ export class UserReadComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('_id');
     this.u.reqresUserGetById(this.id).subscribe(s => {
       this.user = s
+      this.u.setCurrentUser(s);
       console.log(this.user);
     });
   }
   ngDoCheck() {
-    this.u.user = this.user;
+    this.u.setCurrentUser(this.user);
   }
 }

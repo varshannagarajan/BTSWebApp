@@ -20,6 +20,10 @@ export class EventReadComponent implements OnInit {
     this.m.eventsGetById(id).subscribe((s)=> {
       console.log(s);
       this.event = s;
+      this.m.eventSet(this.event);
+      console.log("Hello");
+      console.log(this.m.getCurrentEvents());
+      console.log("Helloooooo");
     });
     
   }
