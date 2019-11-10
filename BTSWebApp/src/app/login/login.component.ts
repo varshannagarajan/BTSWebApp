@@ -43,8 +43,14 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('access_token', c.token);
       console.log(c);
       let tokenDecoded = this.jwtHelper.decodeToken(c.token);
-      this.router.navigate(['/userRead', tokenDecoded._id]);
+      this.m.reqresUserGetById(tokenDecoded._id).subscribe(s => {
+        this.m.setCurrentUser(s);
+        console.log("yerrrr");
+        console.log(this.m.getCurrentUser());
+      });
+      
     });
+    this.router.navigateByUrl('/userContacts');
 
     // If successful...
     //   Save the token in the browser's local storage

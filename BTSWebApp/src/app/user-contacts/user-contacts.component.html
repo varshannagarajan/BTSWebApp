@@ -1,0 +1,32 @@
+<div class="col-md-2"></div>
+<div class="col-md-9" *ngIf="user">
+  <div class="container">
+    <div class="table-responsive">
+      <div class="col-md-6">
+        <h4>User Name</h4>
+        <p>{{ user.user_email }}</p>
+        <h4>First Name</h4>
+        <p>{{ user.user_firstName }}</p>
+        <h4>Last Name</h4>
+        <p>{{ user.user_lastName }}</p>
+        <li>
+                <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th>Contacts</th>
+                        <th>View</th>
+                      </tr>
+                    </thead>
+                    <tbody class="tableBody">
+                      <tr class="row1" *ngFor="let c of user.user_contacts">
+                          <td>{{c}}</td>
+                          <td><button class="btn btn-default" (click)="viewContact(c)">View</button></td>                    
+                      </tr>
+                    </tbody>
+                  </table>
+            </li>
+      </div>
+    </div>
+  </div>
+  <div class="row"></div>
+</div>

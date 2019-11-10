@@ -24,6 +24,8 @@ import { InterceptTokenService } from "./intercept-token.service";
 import { EventReadComponent } from './event-read/event-read.component';
 import { EventUpdateComponent } from './event-update/event-update.component';
 import { EventDeleteComponent } from './event-delete/event-delete.component';
+import { UserContactsComponent } from './user-contacts/user-contacts.component';
+import { EventRoomComponent } from './event-room/event-room.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -48,7 +50,9 @@ export function tokenGetter() {
     UserUpdateComponent,
     UserDeleteComponent,
     UserReadComponent,
-    UserActivateComponent
+    UserActivateComponent,
+    UserContactsComponent,
+    EventRoomComponent
   ],
   imports: [
     FormsModule,

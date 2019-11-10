@@ -2,6 +2,7 @@ import { Contact } from './contact';
 import { EmploymentInfo } from './employment-info';
 
 export class User {
+  _id: string;
   user_email: string;
   user_password: string;
   user_contactInfo: Contact;
