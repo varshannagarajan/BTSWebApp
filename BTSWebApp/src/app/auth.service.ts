@@ -14,6 +14,7 @@ export class AuthService {
   // Properties
 
   private url = 'https://btsgroup11webservices.herokuapp.com/';
+  
 
   // Initialization
 

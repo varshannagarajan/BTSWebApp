@@ -21,6 +21,10 @@ export class EventCreateComponent implements OnInit {
   constructor(private route: ActivatedRoute, private em: EventManagerService, private um: UserService) { 
     this.newEvent = new Events();
     this.newEvent.ev_name = '';
+    //this.currentUser.user_firstName = "Wassup";
+    this.currentUser = this.um.currentUser;
+    //console.log(this.newEvent.ev_name);
+    console.log(this.currentUser.user_firstName);
     // set event empty
   }
 
@@ -35,6 +39,6 @@ export class EventCreateComponent implements OnInit {
     //this.newEvent.ev_coordinator = this.currentUser.user_email;
     this.em.eventsCreate(this.newEvent).subscribe((data)=>{
       console.log("Event Created");
-    });;
+    });
   }
 }

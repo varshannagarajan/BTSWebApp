@@ -10,10 +10,12 @@ import { Credentials } from './credentials';
 })
 export class UserService {
   currentUser: User;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.currentUser = new User();
+   }
 
-  private urlReqres =
-    'https://btsgroup11webservices.herokuapp.com/api/users';
+  private urlReqres ='http://localhost:8080/api/users';
+    //'https://btsgroup11webservices.herokuapp.com/api/users';
 
   reqresUserGetAll(): Observable<User[]> {
     return this.http.get<User[]>(`${this.urlReqres}`);
@@ -21,6 +23,10 @@ export class UserService {
 
   reqresUserGetById(id: String): Observable<User> {
     return this.http.get<User>(`${this.urlReqres}/${id}`);
+  }
+
+  reqresUserGetByUsername(username: String): Observable<User> {
+    return this.http.get<User>(`${this.urlReqres}/username/${username}`);
   }
 
   updateUser(user: User) {

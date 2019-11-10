@@ -15,7 +15,8 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { UserActivateComponent } from './user-activate/user-activate.component';
 import { GuardAuthService } from './guard-auth.service';
-
+import { UserContactsComponent } from './user-contacts/user-contacts.component';
+import { EventRoomComponent } from './event-room/event-room.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -33,6 +34,8 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent},
   { path: 'login', component: LoginComponent},
   { path: 'tokenView', component: TokenViewComponent},
+  { path: 'userContacts', component: UserContactsComponent},
+  { path: 'eventRoom/:_id', component: EventRoomComponent}
 ];
 
 @NgModule({
