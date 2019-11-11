@@ -40,7 +40,7 @@
                 </thead>
                 <tbody class="tableBody">
                   <tr class="row1" *ngFor="let attendee of event.ev_attendees">
-                        <td>{{attendee}}</td>
+                        <td>{{attendee.user_email}}</td>
                         <td><button class="btn btn-default" (click)="viewContact(c)">View</button></td>
                   </tr>
                 </tbody>

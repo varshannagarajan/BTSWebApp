@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       });
       
     });
-    this.router.navigateByUrl('/userContacts');
+    this.router.navigate(['/userContacts']);
 
     // If successful...
     //   Save the token in the browser's local storage
