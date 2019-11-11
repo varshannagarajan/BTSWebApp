@@ -1,5 +1,6 @@
 import { Address } from './address'
 import { Contact } from './contact';
+import { Attendee } from './attendees';
 
 export class Events {
     _id: String;
@@ -11,7 +12,7 @@ export class Events {
     ev_contact: Contact;
     ev_coordinator: String;
     ev_date: Date;
-    ev_attendees: String[];
+    ev_attendees: Attendee[];
     ev_photo: String;
     ev_private: Boolean;
     ev_invitedUsers: String[];
