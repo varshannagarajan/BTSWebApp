@@ -30,7 +30,7 @@ export class UserContactsComponent implements OnInit {
 
   viewContact(c:string){
     console.log(c);
-    this.router.navigateByUrl('/userRead/'+ c);
+    this.router.navigate(['/userRead/', c]);
     /*this.m.reqresUserGetByUsername(c).subscribe(s => {
       this.id = s._id;
       console.log(this.id);

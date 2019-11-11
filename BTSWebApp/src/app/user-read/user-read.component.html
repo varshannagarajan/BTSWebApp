@@ -1,14 +1,14 @@
 <div class="col-md-2"></div>
-<div class="col-md-9" *ngFor="let c of viewUser">
+<div class="col-md-9" *ngIf="viewUser">
   <div class="container">
     <div class="table-responsive">
       <div class="col-md-6">
         <h4>User Name</h4>
-        <p>{{ c.user_email }}</p>
+        <p>{{ viewUser.user_email }}</p>
         <h4>First Name</h4>
-        <p>{{ c.user_firstName }}</p>
+        <p>{{ viewUser.user_firstName }}</p>
         <h4>Last Name</h4>
-        <p>{{ c.user_lastName }}</p>
+        <p>{{ viewUser.user_lastName }}</p>
       </div>
     </div>
   </div>
