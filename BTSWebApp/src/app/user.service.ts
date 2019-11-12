@@ -14,8 +14,8 @@ export class UserService {
     this.currentUser = new User();
    }
 
-  private urlReqres ='http://localhost:8080/api/users';
-    //'https://btsgroup11webservices.herokuapp.com/api/users';
+  private urlReqres = 'http://localhost:8080/api/users';
+    // 'https://btsgroup11webservices.herokuapp.com/api/users';
 
   reqresUserGetAll(): Observable<User[]> {
     return this.http.get<User[]>(`${this.urlReqres}`);
@@ -37,11 +37,11 @@ export class UserService {
     return this.http.delete(`${this.urlReqres}/${credentials.user_email}`);
   }
 
-  getCurrentUser():User{
+  getCurrentUser(): User {
     return this.currentUser;
   }
 
-  setCurrentUser(user: User){
+  setCurrentUser(user: User) {
     this.currentUser = user;
   }
 }

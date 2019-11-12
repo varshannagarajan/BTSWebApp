@@ -1,11 +1,11 @@
-import { Address } from './address'
+import { Address } from './address';
 import { Contact } from './contact';
 import { Attendee } from './attendees';
 
 export class Events {
     _id: String;
     ev_name: String;
-    ev_code: string;
+    ev_code: String;
     ev_address: Address;
     ev_category: String[];
     ev_description: String;

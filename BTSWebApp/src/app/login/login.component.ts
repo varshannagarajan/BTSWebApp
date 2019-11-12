@@ -48,9 +48,10 @@ export class LoginComponent implements OnInit {
         console.log("yerrrr");
         console.log(this.m.getCurrentUser());
       });
-      
+
     });
-    this.router.navigate(['/userContacts']);
+    //this.router.navigate(['/userContacts']);
+    this.router.navigate(['/home']);
 
     // If successful...
     //   Save the token in the browser's local storage
