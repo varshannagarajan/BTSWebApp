@@ -41,7 +41,7 @@ export class EventManagerService {
     this.currentEvent = e;
   }
 
-  eventAddContact(a:EventAttendee){
+  eventAddContact(a: EventAttendee) {
     return this.http.put(`${this.url}/addContactWithAttendeeID`, a);
   }
 
