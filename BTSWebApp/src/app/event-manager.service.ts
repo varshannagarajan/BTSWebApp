@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Events } from './events';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { User } from './user';
+import { Attendee } from './attendees';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ export class EventManagerService {
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
-  private url = 'https://btsgroup11webservices.herokuapp.com/api/events';
+  //private url = 'https://btsgroup11webservices.herokuapp.com/api/events';
+  private url = 'http://localhost:8080/api/events';
 
   // Get all
   eventsGetAll(): Observable<Events[]> {
@@ -21,8 +24,12 @@ export class EventManagerService {
   }
 
   // Get one
-  eventsGetById(id: string): Observable<Events> {
+  eventsGetById(id: String): Observable<Events> {
     return this.http.get<Events>(`${this.url}/${id}`);
+  }
+
+  eventGetByCode(id: String): Observable<Events> {
+    return this.http.get<Events>(`${this.url}/eventCode/${id}`);
   }
 
   getCurrentEvents(): Events {
@@ -44,7 +51,11 @@ export class EventManagerService {
   }
 
   // Delete
-  eventsDelete(eid: string) {
+  eventsDelete(eid: String) {
     return this.http.delete(`${this.url}/${eid}`);
+  }
+
+  eventAddAttendee(ec: String, a: Attendee) {
+    return this.http.put(`${this.url}/attendees/${ec}`, a);
   }
 }

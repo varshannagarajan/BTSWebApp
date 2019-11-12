@@ -1,4 +1,4 @@
-import { Address } from './address'
+import { Address } from './address';
 import { Contact } from './contact';
 import { Attendee } from './attendees';
 
