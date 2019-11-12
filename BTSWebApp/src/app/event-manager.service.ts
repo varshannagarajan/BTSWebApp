@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { User } from './user';
 import { Attendee } from './attendees';
+import { EventAttendee } from './event-room/event-room.component';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,10 @@ export class EventManagerService {
 
   eventSet(e: Events): void {
     this.currentEvent = e;
+  }
+
+  eventAddContact(a:EventAttendee){
+    return this.http.put(`${this.url}/addContactWithAttendeeID`, a);
   }
 
   // Update
