@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./event-room.component.css']
 })
 export class EventRoomComponent implements OnInit {
-  id: string;
+  id: String;
   user: User;
   event: Events;
   evAttendee: EventAttendee;
@@ -22,12 +22,12 @@ export class EventRoomComponent implements OnInit {
     private u: UserService,
     private e: EventManagerService,
     private router: Router
-  ) { 
+  ) {
     this.user = this.u.getCurrentUser();
     this.evAttendee = new EventAttendee();
-    this.evAttendee.attendeeId = "";
-    this.evAttendee.eventCode = "";
-    this.evAttendee.adderUserEmail = "";
+    this.evAttendee.attendeeId = '';
+    this.evAttendee.eventCode = '';
+    this.evAttendee.adderUserEmail = '';
 
   }
 
@@ -36,14 +36,14 @@ export class EventRoomComponent implements OnInit {
     this.e.eventsGetById(this.id).subscribe(s => {
       this.event = s;
       this.e.eventSet(this.event);
-      console.log("*******************");
+      console.log('*******************');
       console.log(this.e.getCurrentEvents());
     });
   }
 
-  viewContact(c:string){
+  viewContact(c: String) {
     console.log(c);
-    this.router.navigate(['/userRead/'+ c]);
+    this.router.navigate(['/userRead/' + c]);
     /*this.m.reqresUserGetByUsername(c).subscribe(s => {
       this.id = s._id;
       console.log(this.id);
@@ -52,19 +52,18 @@ export class EventRoomComponent implements OnInit {
     */
   }
 
-  addContact(aID:string){
+  addContact(aID: String) {
     console.log(aID);
     this.evAttendee.eventCode = this.event.ev_code;
     this.evAttendee.attendeeId = aID;
     this.evAttendee.adderUserEmail = this.user.user_email;
     this.e.eventAddContact(this.evAttendee);
-    
   }
 
 }
 
 export class EventAttendee {
-  eventCode: string;
-  attendeeId: string;
-  adderUserEmail: string;
+  eventCode: String;
+  attendeeId: String;
+  adderUserEmail: String;
 }
