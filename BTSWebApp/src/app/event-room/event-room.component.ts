@@ -15,6 +15,8 @@ export class EventRoomComponent implements OnInit {
   id: string;
   user: User;
   event: Events;
+  evAttendee: EventAttendee;
+
   constructor(
     private route: ActivatedRoute,
     private u: UserService,
@@ -22,6 +24,11 @@ export class EventRoomComponent implements OnInit {
     private router: Router
   ) { 
     this.user = this.u.getCurrentUser();
+    this.evAttendee = new EventAttendee();
+    this.evAttendee.attendeeId = "";
+    this.evAttendee.eventCode = "";
+    this.evAttendee.adderUserEmail = "";
+
   }
 
   ngOnInit() {
@@ -36,7 +43,7 @@ export class EventRoomComponent implements OnInit {
 
   viewContact(c:string){
     console.log(c);
-    this.router.navigateByUrl('/userRead/'+ c);
+    this.router.navigate(['/userRead/'+ c]);
     /*this.m.reqresUserGetByUsername(c).subscribe(s => {
       this.id = s._id;
       console.log(this.id);
@@ -45,4 +52,19 @@ export class EventRoomComponent implements OnInit {
     */
   }
 
+  addContact(aID:string){
+    console.log(aID);
+    this.evAttendee.eventCode = this.event.ev_code;
+    this.evAttendee.attendeeId = aID;
+    this.evAttendee.adderUserEmail = this.user.user_email;
+    this.e.eventAddContact(this.evAttendee);
+    
+  }
+
+}
+
+export class EventAttendee {
+  eventCode: string;
+  attendeeId: string;
+  adderUserEmail: string;
 }
