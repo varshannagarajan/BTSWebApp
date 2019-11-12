@@ -22,14 +22,16 @@ export class EventJoinComponent implements OnInit {
 
   onSubmit(): void {
     this.newAttendee.user_email = this.u.currentUser.user_email;
-    this.newAttendee.attendee_id = this.generateID();
     this.newAttendee.user_firstName = this.u.currentUser.user_firstName;
     this.newAttendee.user_lastName = this.u.currentUser.user_lastName;
+    this.newAttendee.attendee_id = this.generateID();
+
+    console.log(this.newAttendee);
 
     this.e.eventAddAttendee(this.eventCode, this.newAttendee).subscribe(msg => {
       this.e.eventGetByCode(this.eventCode).subscribe(s => {
         this.eventID = s._id;
-        this.router.navigate(['/eventRead/', this.eventID]);
+        this.router.navigate(['/eventRoom/', this.eventID]);
       });
       console.log(msg);
     });
