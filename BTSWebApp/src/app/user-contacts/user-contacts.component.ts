@@ -27,16 +27,20 @@ export class UserContactsComponent implements OnInit {
     console.log(this.m.getCurrentUser());
   }
 
+  ngDoCheck(){
+    this.user = this.m.getCurrentUser();
+  }
+
 
   viewContact(c:string){
     console.log(c);
     this.router.navigate(['/userRead/', c]);
-    /*this.m.reqresUserGetByUsername(c).subscribe(s => {
+    this.m.reqresUserGetByUsername(c).subscribe(s => {
       this.id = s._id;
       console.log(this.id);
       this.router.navigateByUrl('/userRead/'+ s._id);
     });
-    */
+    
   }
 
   addContact(c:string){
