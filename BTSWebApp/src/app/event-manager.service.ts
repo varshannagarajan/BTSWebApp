@@ -42,7 +42,7 @@ export class EventManagerService {
   }
 
   eventAddContact(a: EventAttendee) {
-    return this.http.put(`${this.url}/addContactWithAttendeeID`, a);
+    return this.http.put(`${this.url}addContactWithAttendeeID`, a);
   }
 
   // Update
