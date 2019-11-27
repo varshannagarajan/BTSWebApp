@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 })
 export class UserContactsComponent implements OnInit {
 
+  searchBy: Number;
+  searchBar: String;
+
   id: String;
   user: User;
   constructor(
@@ -45,6 +48,14 @@ export class UserContactsComponent implements OnInit {
 
   addContact(c:string){
     console.log(c);
+  }
+
+  onSubmit(): void { // when the search button is clicked
+    if(this.searchBy && this.searchBar) {
+      
+    } else {
+      console.log("null searchBy or searchBar");
+    }
   }
 
 }
