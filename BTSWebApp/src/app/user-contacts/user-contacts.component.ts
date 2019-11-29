@@ -58,13 +58,16 @@ export class UserContactsComponent implements OnInit {
     });
   }
 
-  search(searchOption: String, searchValue: String): void {
+  search(searchOption: String, searchValue: String): Array<User> {
+    var filteredContacts = new Array();
     switch(searchOption) {
       case "name": {
+        filteredContacts = this.contacts.filter(contact => contact.user_firstName == searchValue);
         console.log("name");
         break;
       }
       case "company": {
+        filteredContacts = this.contacts.filter(contact => contact.user_employmentInfo["organization"] == searchValue);
         console.log("company");
         break;
       }
@@ -77,9 +80,11 @@ export class UserContactsComponent implements OnInit {
         break;
       }
     }
+    return filteredContacts;
   }
 
   onSubmit(): void{ // when the search button is clicked
+    var filteredContacts = new Array();
     if(this.searchBy && this.searchBar) {
       if(this.contacts.length == 0) {
         
@@ -91,11 +96,12 @@ export class UserContactsComponent implements OnInit {
             console.log(err);
           });
         }
-        this.search(this.searchBy, this.searchBar);
-        
+        filteredContacts = this.search(this.searchBy, this.searchBar);
+        console.log(filteredContacts);
       } else {
         // contact array is already prevented. this allows a second search to be faster and not refetch all data again
-        this.search(this.searchBy, this.searchBar);
+        filteredContacts = this.search(this.searchBy, this.searchBar);
+        console.log(filteredContacts);
       }
      
     } else {
