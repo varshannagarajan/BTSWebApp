@@ -26,6 +26,8 @@ import { UserContactsComponent } from './user-contacts/user-contacts.component';
 import { EventRoomComponent } from './event-room/event-room.component';
 import { EventJoinComponent } from './event-join/event-join.component';
 import { EventCreateComponent } from './event-create/event-create.component';
+import { EventSearchComponent } from './event-search/event-search.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -53,13 +55,15 @@ export function tokenGetter() {
     UserActivateComponent,
     UserContactsComponent,
     EventRoomComponent,
-    EventJoinComponent
+    EventJoinComponent,
+    EventSearchComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    Ng2SearchPipeModule,
     JwtModule.forRoot({
       config: {
         tokenGetter,

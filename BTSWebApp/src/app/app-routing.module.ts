@@ -18,6 +18,7 @@ import { GuardAuthService } from './guard-auth.service';
 import { UserContactsComponent } from './user-contacts/user-contacts.component';
 import { EventRoomComponent } from './event-room/event-room.component';
 import { EventJoinComponent } from './event-join/event-join.component';
+import { EventSearchComponent } from './event-search/event-search.component';
 
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'tokenView', component: TokenViewComponent},
   { path: 'userContacts', component: UserContactsComponent},
-  { path: 'eventRoom/:_id', component: EventRoomComponent}
+  { path: 'eventRoom/:_id', component: EventRoomComponent},
+  { path: 'viewAllEvents', component: EventSearchComponent}
 ];
 
 @NgModule({
