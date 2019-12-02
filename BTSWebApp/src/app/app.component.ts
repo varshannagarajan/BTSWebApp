@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BTSWebApp';
+
+  constructor(
+    private m: UserService,
+    private router: Router
+ ) {
+    this.router.events.subscribe((e) => {
+        if (e instanceof NavigationEnd) {
+          this.m.reqresUserGetById(this.m.currentUser._id).subscribe(s => {
+            this.m.setCurrentUser(s);
+            console.log("yerrrr");
+            console.log(this.m.getCurrentUser());
+          });
+        }
+     });
+ }
 }
