@@ -8,6 +8,7 @@
           <th>Event Name:</th>
           <th>Company:</th>
           <th>Description:</th>
+          <th>Catergory</th>
           <th>Start Date:</th>
           <th>End Date:</th>
           <th>Address:</th>
@@ -18,6 +19,9 @@
             <td>{{ event.ev_name }}</td>
             <td>{{ event.ev_company }}</td>
             <td>{{ event.ev_description }}</td>
+            <div *ngFor="let cat of event.ev_category">
+              <td>{{ cat }}</td>
+            </div>
             <td>{{ event.ev_date.start | date: "medium" }}</td>
             <td>{{ event.ev_date.end | date: "medium" }}</td>
             <td>
