@@ -27,9 +27,9 @@
                       </tr>
                     </thead>
                     <tbody class="tableBody">
-                      <tr class="row1" *ngFor="let c of user.user_contacts">
-                          <td>{{c}}</td>
-                          <td><button class="btn btn-default" (click)="viewContact(c)">View</button></td>                    
+                      <tr class="row1" *ngFor="let c of filteredContacts">
+                          <td>{{c.user_firstName}}</td>
+                          <td><button class="btn btn-default" (click)="viewContact(c.user_firstName)">View</button></td>                    
                       </tr>
                     </tbody>
                   </table>

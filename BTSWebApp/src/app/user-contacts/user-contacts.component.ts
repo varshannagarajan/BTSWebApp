@@ -11,9 +11,10 @@ import { Router } from '@angular/router';
 })
 export class UserContactsComponent implements OnInit {
 
-  searchBy: String;
-  searchBar: String;
+  searchBy: string;
+  searchBar: string;
   contacts = new Array();
+  filteredContacts = new Array();
   id: String;
   user: User;
   constructor(
@@ -27,6 +28,8 @@ export class UserContactsComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.m.getCurrentUser();
+    this.getAllUserContacts();
+    this.filteredContacts = this.contacts;
     console.log(this.m.getCurrentUser());
   }
 
@@ -51,14 +54,25 @@ export class UserContactsComponent implements OnInit {
   }
 
    getContact(contactUserName: String): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _) => {
       this.m.reqresUserGetByUsername(contactUserName).subscribe(c => {
         resolve(c[0]);
       });
     });
   }
 
-  search(searchOption: String, searchValue: String): Array<User> {
+  getAllUserContacts(): void {
+    for(var i = 0; i < this.user.user_contacts.length; i++) {
+      this.getContact(this.user.user_contacts[i]).then((contact) => {
+       this.contacts.push(contact);
+       console.log("Contact: " + contact);
+     }).catch((err) => {
+       console.log(err);
+     });
+   }
+  }
+
+  search(searchOption: string, searchValue: string): Array<User> {
     var filteredContacts = new Array();
     switch(searchOption) {
       case "name": {
@@ -72,6 +86,7 @@ export class UserContactsComponent implements OnInit {
         break;
       }
       case "event": {
+        filteredContacts = this.contacts.filter(contact => contact.user_eventsList.includes(searchValue) && this.user.user_eventsList.includes(searchValue));
         console.log("event found");
         break;
       }
@@ -84,28 +99,10 @@ export class UserContactsComponent implements OnInit {
   }
 
   onSubmit(): void{ // when the search button is clicked
-    var filteredContacts = new Array();
     if(this.searchBy && this.searchBar) {
-      if(this.contacts.length == 0) {
-        
-        for(var i = 0; i < this.user.user_contacts.length; i++) {
-           this.getContact(this.user.user_contacts[i]).then((contact) => {
-            this.contacts.push(contact);
-            console.log("Contact: " + contact);
-          }).catch((err) => {
-            console.log(err);
-          });
-        }
-        filteredContacts = this.search(this.searchBy, this.searchBar);
-        console.log(filteredContacts);
-      } else {
-        // contact array is already prevented. this allows a second search to be faster and not refetch all data again
-        filteredContacts = this.search(this.searchBy, this.searchBar);
-        console.log(filteredContacts);
-      }
-     
+      this.filteredContacts = this.search(this.searchBy, this.searchBar);
     } else {
-      console.log("null searchBy or searchBar");
+      this.filteredContacts = this.contacts;
     }
   }
 
