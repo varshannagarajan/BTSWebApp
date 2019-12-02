@@ -10,11 +10,11 @@ import { EventManagerService } from '../event-manager.service';
 })
 export class EventSearchComponent implements OnInit {
   events: Events[];
+  term: string;
   constructor(
-    private route: ActivatedRoute,
-    private e: EventManagerService,
-    private router: Router
+    private e: EventManagerService
     ) {
+      this.term = '';
       this.e.eventsGetAll().subscribe(s => {
         this.events = s;
       });
