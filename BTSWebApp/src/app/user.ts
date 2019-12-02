@@ -8,7 +8,7 @@ export class User {
   user_contactInfo: Contact;
   user_firstName: string;
   user_lastName: string;
-  user_employementInfo: EmploymentInfo;
+  user_employmentInfo: EmploymentInfo;
   user_photos: string[];
   user_contacts: string[];
   user_favourites: string[];

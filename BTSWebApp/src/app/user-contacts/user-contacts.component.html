@@ -9,20 +9,30 @@
         <p>{{ user.user_firstName }}</p>
         <h4>Last Name</h4>
         <p>{{ user.user_lastName }}</p>
-          <table class="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th>Contacts</th>
-                  <th>View</th>
-                </tr>
-              </thead>
-              <tbody class="tableBody">
-                <tr class="row1" *ngFor="let c of user.user_contacts">
-                    <td>{{c}}</td>
-                    <td><button class="btn btn-default" (click)="viewContact(c)">View</button></td>                    
-                </tr>
-              </tbody>
-            </table>
+            <form (ngSubmit)="onSubmit()" #f="ngForm">
+                <table class="table table-striped table-hover">
+                  &nbsp;<label>Search by</label>&nbsp;
+                  <select id = "searchBy" [(ngModel)]="searchBy" name="searchBy">
+                      <option value = "name">name</option>
+                      <option value = "company">company</option>
+                      <option value = "event">event found (contact)</option>
+                  </select>&nbsp;&nbsp;&nbsp;
+                  <input type="text" [(ngModel)]="searchBar" name="searchBar" placeholder="Search..">
+                  <button type="submit">Search</button>
+                    <thead>
+                      <tr>
+                        <th>Contacts</th>
+                        <th>View</th>
+                      </tr>
+                    </thead>
+                    <tbody class="tableBody">
+                      <tr class="row1" *ngFor="let c of filteredContacts">
+                          <td>{{c.user_firstName}}</td>
+                          <td><button class="btn btn-default" (click)="viewContact(c.user_firstName)">View</button></td>                    
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
       </div>
     </div>
   </div>

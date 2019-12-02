@@ -19,7 +19,7 @@ import { UserContactsComponent } from './user-contacts/user-contacts.component';
 import { EventRoomComponent } from './event-room/event-room.component';
 import { EventJoinComponent } from './event-join/event-join.component';
 import { EventFeedComponent } from './event-feed/event-feed.component';
-
+import { EventSearchComponent } from './event-search/event-search.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -38,9 +38,10 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent},
   { path: 'login', component: LoginComponent},
   { path: 'tokenView', component: TokenViewComponent},
-  { path: 'userContacts', component: UserContactsComponent, canActivate: [GuardAuthService]},
+  { path: 'eventFeed', component: EventFeedComponent},
+  { path: 'userContacts', component: UserContactsComponent},
   { path: 'eventRoom/:_id', component: EventRoomComponent},
-  { path: 'eventFeed', component: EventFeedComponent}
+  { path: 'viewAllEvents', component: EventSearchComponent}
 ];
 
 @NgModule({
