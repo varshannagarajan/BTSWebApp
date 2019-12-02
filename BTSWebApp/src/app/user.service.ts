@@ -44,4 +44,8 @@ export class UserService {
   setCurrentUser(user: User) {
     this.currentUser = user;
   }
+
+  addEventToUser(ec: String){
+    return this.http.put(`${this.urlReqres}/addEvent/${ec}`, this.currentUser);
+  }
 }

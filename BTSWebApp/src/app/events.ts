@@ -12,7 +12,7 @@ export class Events {
     ev_company: String;
     ev_contact: Contact;
     ev_coordinator: String;
-    ev_date: Date;
+    ev_date: string;
     ev_attendees: Attendee[];
     ev_photo: String;
     ev_private: Boolean;

@@ -18,6 +18,7 @@ import { GuardAuthService } from './guard-auth.service';
 import { UserContactsComponent } from './user-contacts/user-contacts.component';
 import { EventRoomComponent } from './event-room/event-room.component';
 import { EventJoinComponent } from './event-join/event-join.component';
+import { EventFeedComponent } from './event-feed/event-feed.component';
 
 
 const routes: Routes = [
@@ -30,15 +31,16 @@ const routes: Routes = [
   { path: 'eventJoin', component: EventJoinComponent},
   { path: 'userActivate', component: UserActivateComponent},
   { path: 'userCreate', component: UserCreateComponent},
-  { path: 'userRead/:_id', component: UserReadComponent, canActivate: [GuardAuthService]},
+  { path: 'userRead/:_id', component: UserReadComponent},
   { path: 'userUpdate', component: UserUpdateComponent},
   { path: 'userDelete', component: UserDeleteComponent},
   { path: 'invalidRoute', component: InvalidRouteComponent},
   { path: 'navbar', component: NavbarComponent},
   { path: 'login', component: LoginComponent},
   { path: 'tokenView', component: TokenViewComponent},
-  { path: 'userContacts', component: UserContactsComponent},
-  { path: 'eventRoom/:_id', component: EventRoomComponent}
+  { path: 'userContacts', component: UserContactsComponent, canActivate: [GuardAuthService]},
+  { path: 'eventRoom/:_id', component: EventRoomComponent},
+  { path: 'eventFeed', component: EventFeedComponent}
 ];
 
 @NgModule({

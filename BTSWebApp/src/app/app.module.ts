@@ -26,6 +26,7 @@ import { UserContactsComponent } from './user-contacts/user-contacts.component';
 import { EventRoomComponent } from './event-room/event-room.component';
 import { EventJoinComponent } from './event-join/event-join.component';
 import { EventCreateComponent } from './event-create/event-create.component';
+import { EventFeedComponent } from './event-feed/event-feed.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -53,7 +54,8 @@ export function tokenGetter() {
     UserActivateComponent,
     UserContactsComponent,
     EventRoomComponent,
-    EventJoinComponent
+    EventJoinComponent,
+    EventFeedComponent
   ],
   imports: [
     FormsModule,
