@@ -36,33 +36,14 @@
             <tr>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>ID</th>
+              <th>Email</th>
             </tr>
           </thead>
           <tbody class="tableBody">
             <tr class="row1" *ngFor="let au of event.ev_attendees">
-              <td>{{ au.firstName }}</td>
-              <td>{{ au.lastName }}</td>
-              <td>{{ au._id }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
-      <h4>Invited</h4>
-      <li>
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>ID</th>
-            </tr>
-          </thead>
-          <tbody class="tableBody">
-            <tr class="row1" *ngFor="let iu of event.ev_invitedUsers">
-              <td>{{ iu.firstName }}</td>
-              <td>{{ iu.lastName }}</td>
-              <td>{{ iu._id }}</td>
+              <td>{{ au.user_firstName }}</td>
+              <td>{{ au.user_lastName }}</td>
+              <td>{{ au.user_email }}</td>
             </tr>
           </tbody>
         </table>

@@ -17,20 +17,10 @@ export class EventReadComponent implements OnInit {
 
   ngOnInit() {
     let id = this.route.snapshot.params['_id'];
-    this.m.eventsGetById(id).subscribe((s)=> {
-      console.log(s);
+    this.m.eventGetByCode(id).subscribe((s)=> {
       this.event = s;
-      this.m.eventSet(this.event);
-      console.log("Hello");
-      console.log(this.m.getCurrentEvents());
-      console.log("Helloooooo");
     });
     
-  }
-
-  ngDoCheck(){
-    this.m.eventSet(this.event);
-    console.log(this.event);
   }
 
 }

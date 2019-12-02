@@ -21,10 +21,7 @@ export class UserContactsComponent implements OnInit {
     private route: ActivatedRoute,
     private m: UserService,
     private router: Router
-  ) {
-    this.user = new User();
-    this.user.user_firstName = "George of the Jungle";
-  }
+  ) {  }
 
   ngOnInit() {
     this.user = this.m.getCurrentUser();
@@ -33,24 +30,8 @@ export class UserContactsComponent implements OnInit {
     console.log(this.m.getCurrentUser());
   }
 
-  ngDoCheck(){
-    this.user = this.m.getCurrentUser();
-  }
-
-
   viewContact(c:string){
-    console.log(c);
     this.router.navigate(['/userRead/', c]);
-    this.m.reqresUserGetByUsername(c).subscribe(s => {
-      this.id = s._id;
-      console.log(this.id);
-      this.router.navigateByUrl('/userRead/'+ s._id);
-    });
-    
-  }
-
-  addContact(c:string){
-    console.log(c);
   }
 
    getContact(contactUserName: String): Promise<any> {

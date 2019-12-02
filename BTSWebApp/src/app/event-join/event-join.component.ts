@@ -29,11 +29,15 @@ export class EventJoinComponent implements OnInit {
     console.log(this.newAttendee);
 
     this.e.eventAddAttendee(this.eventCode, this.newAttendee).subscribe(msg => {
-      this.e.eventGetByCode(this.eventCode).subscribe(s => {
-        this.eventID = s._id;
-        this.router.navigate(['/eventRoom/', this.eventID]);
+      this.u.addEventToUser(this.eventCode).subscribe(s => {
+        this.e.eventGetByCode(this.eventCode).subscribe(s => {
+          this.eventID = s._id;
+          this.router.navigate(['/eventRoom/', this.eventID]);
+        });
+        console.log(msg);
+      
       });
-      console.log(msg);
+      
     });
   }
 

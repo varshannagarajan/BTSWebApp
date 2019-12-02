@@ -26,6 +26,7 @@ import { UserContactsComponent } from './user-contacts/user-contacts.component';
 import { EventRoomComponent } from './event-room/event-room.component';
 import { EventJoinComponent } from './event-join/event-join.component';
 import { EventCreateComponent } from './event-create/event-create.component';
+import { EventFeedComponent } from './event-feed/event-feed.component';
 import { EventSearchComponent } from './event-search/event-search.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
@@ -56,6 +57,7 @@ export function tokenGetter() {
     UserContactsComponent,
     EventRoomComponent,
     EventJoinComponent,
+    EventFeedComponent,
     EventSearchComponent
   ],
   imports: [

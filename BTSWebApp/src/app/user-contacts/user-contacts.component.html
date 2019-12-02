@@ -9,6 +9,7 @@
         <p>{{ user.user_firstName }}</p>
         <h4>Last Name</h4>
         <p>{{ user.user_lastName }}</p>
+        <td><button class="btn btn-default" (click)="getNewData()">Refresh</button></td>  
         <li>
             <form (ngSubmit)="onSubmit()" #f="ngForm">
                 <table class="table table-striped table-hover">

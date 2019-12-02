@@ -17,7 +17,7 @@ export class EventManagerService {
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   private url = 'https://btsgroup11webservices.herokuapp.com/api/events';
-  //private url = 'http://localhost:8080/api/events';
+  // private url = 'http://localhost:8080/api/events';
 
   // Get all
   eventsGetAll(): Observable<Events[]> {
@@ -31,6 +31,10 @@ export class EventManagerService {
 
   eventGetByCode(id: String): Observable<Events> {
     return this.http.get<Events>(`${this.url}/eventCode/${id}`);
+  }
+
+  getUsersEvents(username: String) {
+    return this.http.get<Events[]>(`${this.url}/userEvents/${username}`);
   }
 
   getCurrentEvents(): Events {
@@ -63,4 +67,6 @@ export class EventManagerService {
   eventAddAttendee(ec: String, a: Attendee) {
     return this.http.put(`${this.url}/attendees/${ec}`, a);
   }
+
+
 }

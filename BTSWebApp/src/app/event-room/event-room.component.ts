@@ -58,11 +58,16 @@ export class EventRoomComponent implements OnInit {
     this.evAttendee.attendeeId = aID;
     this.evAttendee.adderUserEmail = this.user.user_email;
     console.log(this.evAttendee);
-    this.e.eventAddContact(this.evAttendee).subscribe((s)=> {
-      console.log(s);
+    this.e.eventAddContact(this.evAttendee).subscribe((x)=> {
+      console.log(x);
+      this.u.reqresUserGetByUsername(this.user.user_email).subscribe(s => {
+        this.user = s;
+        this.u.setCurrentUser(s);
+        console.log(s);
+        console.log(this.u.currentUser);
+      });
     });
   }
-
 }
 
 export class EventAttendee {
