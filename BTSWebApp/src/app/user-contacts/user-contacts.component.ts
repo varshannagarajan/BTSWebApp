@@ -34,10 +34,23 @@ export class UserContactsComponent implements OnInit {
     this.router.navigate(['/userRead/', c]);
   }
 
+  delContact(c:string){
+    let del = new DeleteContact;
+    del.usersEmail = this.user.user_email;
+    del.emailToDelete = c;
+    console.log(del);
+    this.m.deleteContact(del).subscribe(s => {
+    
+      //this.filteredContacts = this.contacts;
+    });
+    this.filteredContacts = this.contacts.filter(contact => contact.user_email != del.emailToDelete);
+    this.contacts = this.filteredContacts;
+  }
+
    getContact(contactUserName: String): Promise<any> {
     return new Promise((resolve, _) => {
       this.m.reqresUserGetByUsername(contactUserName).subscribe(c => {
-        resolve(c[0]);
+        resolve(c);
       });
     });
   }
@@ -87,4 +100,9 @@ export class UserContactsComponent implements OnInit {
     }
   }
 
+}
+
+export class DeleteContact {
+  emailToDelete: string;
+  usersEmail: string;
 }

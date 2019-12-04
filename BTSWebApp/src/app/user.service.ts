@@ -4,6 +4,7 @@ import { Observable, from } from 'rxjs';
 
 import { User } from './user';
 import { Credentials } from './credentials';
+import { DeleteContact } from './user-contacts/user-contacts.component';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class UserService {
 
   reqresUserGetByUsername(username: String): Observable<User> {
     return this.http.get<User>(`${this.urlReqres}/username/${username}`);
+  }
+
+  deleteContact(a: DeleteContact) {
+    return this.http.put(`${this.urlReqres}deleteContact`, a);
   }
 
   updateUser(user: User) {

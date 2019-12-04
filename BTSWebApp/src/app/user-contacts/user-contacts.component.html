@@ -23,12 +23,14 @@
                       <tr>
                         <th>Contacts</th>
                         <th>View</th>
+                        <th>Remove</th>
                       </tr>
                     </thead>
                     <tbody class="tableBody">
                       <tr class="row1" *ngFor="let c of filteredContacts">
                           <td>{{c.user_firstName}}</td>
-                          <td><button class="btn btn-default" (click)="viewContact(c.user_firstName)">View</button></td>                    
+                          <td><button class="btn btn-default" (click)="viewContact(c.user_email)">View</button></td>
+                          <td><button class="btn btn-default" (click)="delContact(c.user_email)">Remove</button></td>                      
                       </tr>
                     </tbody>
                   </table>
