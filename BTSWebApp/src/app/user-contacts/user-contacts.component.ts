@@ -39,7 +39,12 @@ export class UserContactsComponent implements OnInit {
     del.usersEmail = this.user.user_email;
     del.emailToDelete = c;
     console.log(del);
-    this.m.deleteContact(del);
+    this.m.deleteContact(del).subscribe(s => {
+    
+      //this.filteredContacts = this.contacts;
+    });
+    this.filteredContacts = this.contacts.filter(contact => contact.user_email != del.emailToDelete);
+    this.contacts = this.filteredContacts;
   }
 
    getContact(contactUserName: String): Promise<any> {
