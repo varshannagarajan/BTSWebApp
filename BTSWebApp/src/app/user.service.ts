@@ -15,8 +15,8 @@ export class UserService {
     this.currentUser = new User();
    }
 
-  private urlReqres = 'http://localhost:8080/api/users';
-  // private urlReqres = 'https://btsgroup11webservices.herokuapp.com/api/users';
+  // private urlReqres = 'http://localhost:8080/api/users';
+  private urlReqres = 'https://btsgroup11webservices.herokuapp.com/api/users';
 
   reqresUserGetAll(): Observable<User[]> {
     return this.http.get<User[]>(`${this.urlReqres}`);
@@ -31,7 +31,7 @@ export class UserService {
   }
 
   deleteContact(a: DeleteContact) {
-    return this.http.put(`http://localhost:8080/usersdeleteContact`, a);
+    return this.http.put(`${this.urlReqres}deleteContact`, a);
   }
 
   updateUser(user: User) {
