@@ -3,21 +3,14 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-token-view',
-  templateUrl: './token-view.component.html',
-  styleUrls: ['./token-view.component.css']
+  templateUrl: './token-view.component.html'
 })
 export class TokenViewComponent {
-
-  // Properties
-
   tokenRaw?: string;
   tokenDecoded?: any;
   tokenIssuedTimestamp: any;
 
-  // Initialization
-
   constructor(private jwtHelper: JwtHelperService) {
-
     // Fetch the token from the browser's local storage
     this.tokenRaw = localStorage.getItem('access_token');
 
@@ -31,5 +24,4 @@ export class TokenViewComponent {
       this.tokenIssuedTimestamp = '';
     }
   }
-
 }

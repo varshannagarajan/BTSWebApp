@@ -1,36 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Credentials } from '../credentials';
-import { UserService } from '../user.service';
+import { Credentials } from '../classes/credentials';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
-  // Properties
-
   credentials: Credentials;
   loginError: string;
 
-  // Initialization
-
-  constructor(private m: UserService, private router: Router, private a: AuthService, private jwtHelper: JwtHelperService) {
+  constructor(
+    private m: UserService,
+    private router: Router,
+    private a: AuthService,
+    private jwtHelper: JwtHelperService
+  ) {
     this.credentials = new Credentials();
     this.credentials.user_email = '';
     this.credentials.user_password = '';
-
     this.loginError = '';
   }
 
   ngOnInit() {}
-
-  // Methods
 
   onSubmit(): void {
     console.log(this.credentials);
@@ -42,15 +37,14 @@ export class LoginComponent implements OnInit {
     this.a.login(this.credentials).subscribe(c => {
       localStorage.setItem('access_token', c.token);
       console.log(c);
-      let tokenDecoded = this.jwtHelper.decodeToken(c.token);
+      const tokenDecoded = this.jwtHelper.decodeToken(c.token);
       this.m.reqresUserGetById(tokenDecoded._id).subscribe(s => {
         this.m.setCurrentUser(s);
-        console.log("yerrrr");
+        console.log('yerrrr');
         console.log(this.m.getCurrentUser());
       });
-
     });
-    //this.router.navigate(['/userContacts']);
+    // this.router.navigate(['/userContacts']);
     this.router.navigate(['/home']);
 
     // If successful...

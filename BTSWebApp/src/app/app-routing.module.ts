@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EventCreateComponent } from './event-create/event-create.component';
+import { EventCreateComponent } from './event-components/event-create/event-create.component';
 import { InvalidRouteComponent } from './invalid-route/invalid-route.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { TokenViewComponent } from './token-view/token-view.component';
-import { UserCreateComponent } from './user-create/user-create.component';
+import { UserCreateComponent } from './user-components/user-create/user-create.component';
 import { HomeComponent } from './home/home.component';
-import { EventReadComponent } from './event-read/event-read.component';
-import { EventUpdateComponent } from './event-update/event-update.component';
-import { EventDeleteComponent } from './event-delete/event-delete.component';
-import { UserReadComponent } from './user-read/user-read.component';
-import { UserUpdateComponent } from './user-update/user-update.component';
-import { UserDeleteComponent } from './user-delete/user-delete.component';
-import { UserActivateComponent } from './user-activate/user-activate.component';
-import { GuardAuthService } from './guard-auth.service';
-import { UserContactsComponent } from './user-contacts/user-contacts.component';
-import { EventRoomComponent } from './event-room/event-room.component';
-import { EventJoinComponent } from './event-join/event-join.component';
-import { EventFeedComponent } from './event-feed/event-feed.component';
-import { EventSearchComponent } from './event-search/event-search.component';
+import { EventReadComponent } from './event-components/event-read/event-read.component';
+import { EventUpdateComponent } from './event-components/event-update/event-update.component';
+import { EventDeleteComponent } from './event-components/event-delete/event-delete.component';
+import { UserReadComponent } from './user-components/user-read/user-read.component';
+import { UserUpdateComponent } from './user-components/user-update/user-update.component';
+import { UserDeleteComponent } from './user-components/user-delete/user-delete.component';
+import { UserActivateComponent } from './user-components/user-activate/user-activate.component';
+import { GuardAuthService } from './services/guard-auth.service';
+import { UserContactsComponent } from './user-components/user-contacts/user-contacts.component';
+import { EventRoomComponent } from './event-components/event-room/event-room.component';
+import { EventJoinComponent } from './event-components/event-join/event-join.component';
+import { EventFeedComponent } from './event-components/event-feed/event-feed.component';
+import { EventSearchComponent } from './event-components/event-search/event-search.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
