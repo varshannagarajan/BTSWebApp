@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../classes/user';
 import { UserService } from '../../services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Events } from '../../classes/events';
 import { EventService } from '../../services/event.service';
-import { Router } from '@angular/router';
+import { Attendee } from 'src/app/classes/attendees';
 
 @Component({
   selector: 'app-event-room',
@@ -15,6 +15,7 @@ export class EventRoomComponent implements OnInit {
   user: User;
   event: Events;
   evAttendee: EventAttendee;
+  attendeeUsers: User[];
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class EventRoomComponent implements OnInit {
     this.evAttendee.attendeeId = '';
     this.evAttendee.eventCode = '';
     this.evAttendee.adderUserEmail = '';
+    this.attendeeUsers = [];
   }
 
   ngOnInit() {
@@ -34,8 +36,13 @@ export class EventRoomComponent implements OnInit {
     this.e.eventsGetById(this.id).subscribe(s => {
       this.event = s;
       this.e.eventSet(this.event);
-      console.log('*******************');
-      console.log(this.e.getCurrentEvents());
+      for(let i = 0; i < this.event.ev_attendees.length; i++){
+        this.u.reqresUserGetByUsername(this.event.ev_attendees[i].user_email).subscribe(s => {
+          this.attendeeUsers.push(s);
+          console.log('User Object' + s);
+        });
+        console.log('User Object' + this.attendeeUsers);
+      }
     });
   }
 
