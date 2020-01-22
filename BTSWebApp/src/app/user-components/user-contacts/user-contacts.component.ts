@@ -6,7 +6,20 @@ import { ImageUploadService } from '../../services/image-upload.service';
 
 @Component({
   selector: 'app-user-contacts',
-  templateUrl: './user-contacts.component.html'
+  templateUrl: './user-contacts.component.html',
+  styles: [`
+    .userInfo{
+      display: flex;
+      justify-content: space-between;
+      align-content: flex-start;
+      flex-flow: row wrap;
+    }
+
+    .userInfo button{
+      height: 30px;
+    }
+
+  `],
 })
 export class UserContactsComponent implements OnInit {
   imageObj: File;
