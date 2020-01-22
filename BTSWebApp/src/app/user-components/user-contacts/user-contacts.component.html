@@ -3,6 +3,25 @@
   <div class="container">
     <div class="table-responsive">
       <div class="col-md-6">
+        <h4>Profile Picture</h4>
+        <input (change)="onImagePicked($event)" placeholder="Upload Image" 
+              type="file" />
+          <button (click)="onImageUpload()">Upload Image</button>
+
+          <div *ngIf="imageUrl">
+          Preview of uploaded image
+          <br />
+          <img width="200px" src="https://mesh-user-profile-pictures.s3.amazonaws.com/{{ 
+          imageUrl }}" 
+          />
+          </div>
+
+        <div *ngIf="user.user_profilePicture">
+            Preview of already uploaded image
+          <br />
+          <img width="200px" src="{{ user.user_profilePicture }}" 
+          />
+        </div>
         <h4>User Name</h4>
         <p>{{ user.user_email }}</p>
         <h4>First Name</h4>
