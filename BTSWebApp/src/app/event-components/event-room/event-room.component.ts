@@ -36,6 +36,7 @@ export class EventRoomComponent implements OnInit {
     this.e.eventsGetById(this.id).subscribe(s => {
       this.event = s;
       this.e.eventSet(this.event);
+      console.log('Number of attendees is ' +  this.event.ev_attendees.length);
       for(let i = 0; i < this.event.ev_attendees.length; i++){
         this.u.reqresUserGetByUsername(this.event.ev_attendees[i].user_email).subscribe(s => {
           this.attendeeUsers.push(s);
