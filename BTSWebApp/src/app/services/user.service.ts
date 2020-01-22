@@ -38,6 +38,10 @@ export class UserService {
     return this.http.put(`${this.url}users/${user.user_email}`, user);
   }
 
+  addProfilePicture(profilePicture: ProfilePicture) {
+    return this.http.put(`${this.url}users/add-picture`, profilePicture);
+  }
+
   deleteUser(credentials: Credentials) {
     return this.http.delete(`${this.url}users/${credentials.user_email}`);
   }

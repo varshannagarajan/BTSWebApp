@@ -8,6 +8,7 @@ export class User {
   user_contactInfo: Contact;
   user_firstName: string;
   user_lastName: string;
+  user_profilePicture: string;
   user_employmentInfo: EmploymentInfo;
   user_photos: string[];
   user_contacts: string[];
@@ -15,4 +16,9 @@ export class User {
   user_eventsList: string[];
   user_bio: string;
   user_statusActivated: boolean;
+}
+
+export class ProfilePicture {
+  userEmail: string;
+  profilePictureURL: string;
 }

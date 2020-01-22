@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../classes/user';
+import { User, ProfilePicture } from '../../classes/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { ImageUploadService } from '../../services/image-upload.service';
 
 @Component({
   selector: 'app-user-contacts',
   templateUrl: './user-contacts.component.html'
 })
 export class UserContactsComponent implements OnInit {
+  imageObj: File;
+  imageUrl: string;
   searchBy: string;
   searchBar: string;
   contacts = new Array();
@@ -16,7 +19,8 @@ export class UserContactsComponent implements OnInit {
   user: User;
   constructor(
     private m: UserService,
-    private router: Router
+    private router: Router,
+    private imageUploadService: ImageUploadService
   ) {}
 
   ngOnInit() {
@@ -24,6 +28,31 @@ export class UserContactsComponent implements OnInit {
     this.getAllUserContacts();
     this.filteredContacts = this.contacts;
     console.log(this.m.getCurrentUser());
+  }
+
+  onImagePicked(event: Event): void {
+    const FILE = (event.target as HTMLInputElement).files[0];
+    this.imageObj = FILE;
+  }
+
+  onImageUpload() {
+    const imageForm = new FormData();
+    const imageExtension = this.imageObj.name.substr(this.imageObj.name.lastIndexOf('.'));
+    const imageName = this.user.user_email + imageExtension;
+  
+    imageForm.append('image', this.imageObj, imageName);
+    this.imageUploadService.imageUpload(imageForm).subscribe(res => {
+      this.imageUrl = res['image'];
+
+      this.addProfilePictureURLToUser();
+    });
+  }
+
+  addProfilePictureURLToUser() {
+    const profilePicture = new ProfilePicture();
+    profilePicture.userEmail = this.user.user_email;
+    profilePicture.profilePictureURL = "https://mesh-user-profile-pictures.s3.amazonaws.com/" + this.imageUrl;
+    this.m.addProfilePicture(profilePicture).subscribe();
   }
 
   viewContact(c: string) {
