@@ -4,4 +4,5 @@ export class Address {
     city: String;
     province: String;
     country: String;
+    
 }
