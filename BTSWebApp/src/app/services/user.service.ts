@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { User } from '../classes/user';
+import { User, PictureURL } from '../classes/user';
 import { Credentials } from '../classes/credentials';
 import { DeleteContact } from '../user-components/user-contacts/user-contacts.component';
 import { environment } from 'src/environments/environment';
@@ -38,8 +38,12 @@ export class UserService {
     return this.http.put(`${this.url}users/${user.user_email}`, user);
   }
 
-  addProfilePicture(profilePicture: ProfilePicture) {
-    return this.http.put(`${this.url}users/add-picture`, profilePicture);
+  addProfilePicture(profilePicture: PictureURL) {
+    return this.http.put(`${this.url}users/add-profile-picture`, profilePicture);
+  }
+
+  addLogoPicture(profilePicture: PictureURL) {
+    return this.http.put(`${this.url}users/add-logo-picture`, profilePicture);
   }
 
   deleteUser(credentials: Credentials) {

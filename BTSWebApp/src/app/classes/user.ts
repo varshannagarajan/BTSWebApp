@@ -9,6 +9,7 @@ export class User {
   user_firstName: string;
   user_lastName: string;
   user_profilePicture: string;
+  user_logoPicture: string;
   user_employmentInfo: EmploymentInfo;
   user_photos: string[];
   user_contacts: string[];
@@ -18,7 +19,7 @@ export class User {
   user_statusActivated: boolean;
 }
 
-export class ProfilePicture {
+export class PictureURL {
   userEmail: string;
-  profilePictureURL: string;
+  pictureURL: string;
 }
