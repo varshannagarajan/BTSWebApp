@@ -1,0 +1,20 @@
+<mat-card *ngIf="userOB">
+  <mat-card-header>
+    <img mat-card-avatar *ngIf="userOB.user_profilePicture" src="{{userOB.user_profilePicture}}" class="md-user-avatar"/>
+    <mat-card-title>
+      {{ userOB.user_firstName }} {{ userOB.user_lastName }}
+    </mat-card-title>
+    <mat-card-subtitle >
+      {{ userOB.user_employmentInfo.occupation }},
+      {{ userOB.user_employmentInfo.organization }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ userOB.user_bio }}</p>
+    <img mat-card-image src="{{userOB.user_logoPicture}}">
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="accent">Contact</button>
+    <button mat-raised-button color="accent" (click)="addContact(attendee.attendee_id)">Add</button>
+  </mat-card-actions>
+</mat-card>

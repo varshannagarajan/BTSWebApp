@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { GuardAuthService } from './services/guard-auth.service';
@@ -29,10 +30,73 @@ import { EventCreateComponent } from './event-components/event-create/event-crea
 import { EventFeedComponent } from './event-components/event-feed/event-feed.component';
 import { EventSearchComponent } from './event-components/event-search/event-search.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { BusinessCardComponent } from './business-card/business-card.component';
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule
+} from '@angular/material/';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
+@NgModule({
+  exports: [
+    // Material
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatSliderModule,
+    MatSnackBarModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatNativeDateModule
+  ]
+})
+export class MaterialModule {}
 
 @NgModule({
   declarations: [
@@ -58,14 +122,17 @@ export function tokenGetter() {
     EventRoomComponent,
     EventJoinComponent,
     EventFeedComponent,
-    EventSearchComponent
+    EventSearchComponent,
+    BusinessCardComponent
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     Ng2SearchPipeModule,
+    MaterialModule,
     JwtModule.forRoot({
       config: {
         tokenGetter,
@@ -73,6 +140,7 @@ export function tokenGetter() {
       }
     })
   ],
+  exports: [EventRoomComponent],
   providers: [
     AuthService,
     GuardAuthService,
@@ -81,7 +149,7 @@ export function tokenGetter() {
       useClass: InterceptTokenService,
       multi: true
     }
-    ],
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

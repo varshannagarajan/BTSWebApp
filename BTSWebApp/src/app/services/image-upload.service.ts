@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
 })
 export class ImageUploadService {
   private url = environment.url;
-
   constructor(private http: HttpClient) {}
 
   imageUpload(imageForm: FormData) {

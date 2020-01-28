@@ -1,54 +1,30 @@
 <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-9" *ngIf="event">
-          <h2>Event Room - {{ event.ev_name }}</h2>
-          <ul style="list-style-type:none;">
-            <li>
-              <table>
-                <tbody class="tableBody">
-                  <tr>
-                    <td>Event ID: </td>
-                    <td>{{ event._id }}</td>
-                  </tr>
-                  <tr>
-                    <td>Company: </td>
-                    <td>{{ event.ev_company }}</td>
-                  </tr>
-                  <tr>
-                    <td>Description: </td>
-                    <td>{{ event.ev_description }}</td>
-                  </tr>
-                  <tr>
-                    <td>Address: </td>
-                    <td>{{ event.ev_address.street }} </td>
-                    <td>{{ event.ev_address.postalCode }} </td>
-                    <td>{{ event.ev_address.city }} </td>
-                    <td>{{ event.ev_address.province }} </td>
-                    <td>{{ event.ev_address.country }} </td>
-                  </tr>
-                </tbody>
-              </table>
-            </li>
-            <h4>Attendees</h4>
-            <li>
-              <table class="table table-striped table-hover">
-                <thead>
-                  <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Add</th>
-                  </tr>
-                </thead>
-                <tbody class="tableBody">
-                  <tr class="row1" *ngFor="let attendee of event.ev_attendees">
-                        <td>{{attendee.user_firstName}}</td>
-                        <td>{{attendee.user_lastName}}</td>
-                        <td><button class="btn btn-default" (click)="addContact(attendee.attendee_id)">Add</button></td>
-                  </tr>
-                </tbody>
-              </table>
-            </li>
-          </ul>
-        </div>
-      </div>
-      
+  <div class="col-md-2"></div>
+  <div class="col-md-9" *ngIf="event">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          {{ event.ev_name }} (Event ID: {{ event._id }})
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{ event.ev_description }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Company: {{ event.ev_company }}</p>
+        <p>
+          Address:
+          {{ event.ev_address.street }}
+          {{ event.ev_address.postalCode }}
+          {{ event.ev_address.city }}
+          {{ event.ev_address.province }}
+          {{ event.ev_address.country }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+    <h4>Attendees</h4>
+    <div *ngFor="let attendee of attendeeUsers">
+      <app-business-card [userOB]="attendee"></app-business-card>
+    </div>
+  </div>
+</div>
