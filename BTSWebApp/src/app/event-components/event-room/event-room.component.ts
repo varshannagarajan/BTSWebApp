@@ -36,19 +36,17 @@ export class EventRoomComponent implements OnInit {
     this.e.eventsGetById(this.id).subscribe(s => {
       this.event = s;
       this.e.eventSet(this.event);
-      console.log('Number of attendees is ' +  this.event.ev_attendees.length);
-      for(let i = 0; i < this.event.ev_attendees.length; i++){
-        this.u.reqresUserGetByUsername(this.event.ev_attendees[i].user_email).subscribe(s => {
-          this.attendeeUsers.push(s);
-          console.log('User Object' + s);
-        });
-        console.log('User Object' + this.attendeeUsers);
+      for (let i = 0; i < this.event.ev_attendees.length; i++) {
+        this.u
+          .reqresUserGetByUsername(this.event.ev_attendees[i].user_email)
+          .subscribe(s => {
+            this.attendeeUsers.push(s);
+          });
       }
     });
   }
 
   viewContact(c: String) {
-    console.log(c);
     this.router.navigate(['/userRead/' + c]);
     /*this.m.reqresUserGetByUsername(c).subscribe(s => {
       this.id = s._id;
@@ -59,18 +57,13 @@ export class EventRoomComponent implements OnInit {
   }
 
   addContact(aID: String) {
-    console.log(aID);
     this.evAttendee.eventCode = this.event.ev_code;
     this.evAttendee.attendeeId = aID;
     this.evAttendee.adderUserEmail = this.user.user_email;
-    console.log(this.evAttendee);
     this.e.eventAddContact(this.evAttendee).subscribe(x => {
-      console.log(x);
       this.u.reqresUserGetByUsername(this.user.user_email).subscribe(s => {
         this.user = s;
         this.u.setCurrentUser(s);
-        console.log(s);
-        console.log(this.u.currentUser);
       });
     });
   }

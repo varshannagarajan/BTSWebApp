@@ -58,7 +58,8 @@ import {
   MatSnackBarModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule } from '@angular/material/';
+  MatTooltipModule
+} from '@angular/material/';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -92,7 +93,7 @@ export function tokenGetter() {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatNativeDateModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialModule {}
@@ -148,7 +149,7 @@ export class MaterialModule {}
       useClass: InterceptTokenService,
       multi: true
     }
-    ],
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
