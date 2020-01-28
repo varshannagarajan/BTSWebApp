@@ -20,6 +20,7 @@ export class UserCreateComponent implements OnInit {
     this.user.user_firstName = '';
     this.user.user_lastName = '';
     this.user.user_profilePicture = '';
+    this.user.user_logoPicture = '';
     this.user.user_bio = '';
     this.user.user_statusActivated = false;
     this.user.user_photos = [''];

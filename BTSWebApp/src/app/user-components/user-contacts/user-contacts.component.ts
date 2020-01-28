@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User, ProfilePicture } from '../../classes/user';
+import { User, PictureURL } from '../../classes/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { ImageUploadService } from '../../services/image-upload.service';
@@ -35,24 +35,35 @@ export class UserContactsComponent implements OnInit {
     this.imageObj = FILE;
   }
 
-  onImageUpload() {
+  onImageUpload(profilePicture: Boolean) {
     const imageForm = new FormData();
     const imageExtension = this.imageObj.name.substr(this.imageObj.name.lastIndexOf('.'));
-    const imageName = this.user.user_email + imageExtension;
+    var imageName = String();
+    
+    if(profilePicture) {
+      imageName = this.user.user_email + imageExtension;
+    } else {
+      imageName = this.user.user_email + "-logo" + imageExtension;
+    }
+    
   
     imageForm.append('image', this.imageObj, imageName);
     this.imageUploadService.imageUpload(imageForm).subscribe(res => {
       this.imageUrl = res['image'];
 
-      this.addProfilePictureURLToUser();
+      this.addPictureURLToUser(profilePicture);
     });
   }
 
-  addProfilePictureURLToUser() {
-    const profilePicture = new ProfilePicture();
-    profilePicture.userEmail = this.user.user_email;
-    profilePicture.profilePictureURL = "https://mesh-user-profile-pictures.s3.amazonaws.com/" + this.imageUrl;
-    this.m.addProfilePicture(profilePicture).subscribe();
+  addPictureURLToUser(isProfilePicture: Boolean) {
+    const pictureURL = new PictureURL();
+    pictureURL.userEmail = this.user.user_email;
+    pictureURL.pictureURL = "https://mesh-user-profile-pictures.s3.amazonaws.com/" + this.imageUrl;
+    if(isProfilePicture) {
+      this.m.addProfilePicture(pictureURL).subscribe();
+    } else {
+      this.m.addLogoPicture(pictureURL).subscribe();
+    }
   }
 
   viewContact(c: string) {

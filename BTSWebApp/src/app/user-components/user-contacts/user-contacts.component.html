@@ -6,15 +6,20 @@
         <h4>Profile Picture</h4>
         <input (change)="onImagePicked($event)" placeholder="Upload Image" 
               type="file" />
-          <button (click)="onImageUpload()">Upload Image</button>
+          <button (click)="onImageUpload(true)">Upload Image</button>
 
           <div *ngIf="imageUrl">
-          Preview of uploaded image
-          <br />
-          <img width="200px" src="https://mesh-user-profile-pictures.s3.amazonaws.com/{{ 
-          imageUrl }}" 
-          />
-          </div>
+            Preview of uploaded image
+            <br />
+            <img width="200px" src="https://mesh-user-profile-pictures.s3.amazonaws.com/{{ 
+            imageUrl }}" 
+            />
+            </div>
+            
+        <h4>Logo Picture</h4>
+        <input (change)="onImagePicked($event)" placeholder="Upload Logo" 
+              type="file" />
+          <button (click)="onImageUpload(false)">Upload Logo</button>
 
         <div *ngIf="user.user_profilePicture">
             Preview of already uploaded image
