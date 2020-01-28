@@ -4,7 +4,7 @@ import { User } from '../classes/user';
 @Component({
   selector: 'app-business-card',
   templateUrl: './business-card.component.html',
-  styles: []
+  styles: ['./business-card.component.css']
 })
 export class BusinessCardComponent implements OnInit {
 

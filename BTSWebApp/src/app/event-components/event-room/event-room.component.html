@@ -31,7 +31,6 @@
             </li>
             <h4>Attendees</h4>
             <div *ngFor="let attendee of attendeeUsers">
-              <p>{{attendee.user_email}}</p>
               <app-business-card [userOB]="attendee"></app-business-card>
             </div>
           </ul>
