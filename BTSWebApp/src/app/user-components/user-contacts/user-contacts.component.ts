@@ -1,16 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { User, PictureURL } from '../../classes/user';
+import { User } from '../../classes/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { ImageUploadService } from '../../services/image-upload.service';
 
 @Component({
   selector: 'app-user-contacts',
-  templateUrl: './user-contacts.component.html'
+  templateUrl: './user-contacts.component.html',
+  styles: [`
+    .userInfo{
+      display: flex;
+      justify-content: space-between;
+      align-content: flex-start;
+      flex-flow: row wrap;
+    }
+
+    .userInfo button{
+      height: 30px;
+    }
+
+  `],
 })
 export class UserContactsComponent implements OnInit {
-  imageObj: File;
-  imageUrl: string;
   searchBy: string;
   searchBar: string;
   contacts = new Array();
@@ -19,8 +29,7 @@ export class UserContactsComponent implements OnInit {
   user: User;
   constructor(
     private m: UserService,
-    private router: Router,
-    private imageUploadService: ImageUploadService
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -28,42 +37,6 @@ export class UserContactsComponent implements OnInit {
     this.getAllUserContacts();
     this.filteredContacts = this.contacts;
     console.log(this.m.getCurrentUser());
-  }
-
-  onImagePicked(event: Event): void {
-    const FILE = (event.target as HTMLInputElement).files[0];
-    this.imageObj = FILE;
-  }
-
-  onImageUpload(profilePicture: Boolean) {
-    const imageForm = new FormData();
-    const imageExtension = this.imageObj.name.substr(this.imageObj.name.lastIndexOf('.'));
-    var imageName = String();
-    
-    if(profilePicture) {
-      imageName = this.user.user_email + imageExtension;
-    } else {
-      imageName = this.user.user_email + "-logo" + imageExtension;
-    }
-    
-  
-    imageForm.append('image', this.imageObj, imageName);
-    this.imageUploadService.imageUpload(imageForm).subscribe(res => {
-      this.imageUrl = res['image'];
-
-      this.addPictureURLToUser(profilePicture);
-    });
-  }
-
-  addPictureURLToUser(isProfilePicture: Boolean) {
-    const pictureURL = new PictureURL();
-    pictureURL.userEmail = this.user.user_email;
-    pictureURL.pictureURL = "https://mesh-user-profile-pictures.s3.amazonaws.com/" + this.imageUrl;
-    if(isProfilePicture) {
-      this.m.addProfilePicture(pictureURL).subscribe();
-    } else {
-      this.m.addLogoPicture(pictureURL).subscribe();
-    }
   }
 
   viewContact(c: string) {
