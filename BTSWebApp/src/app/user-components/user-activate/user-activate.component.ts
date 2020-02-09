@@ -21,7 +21,6 @@ export class UserActivateComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(): void {
-    console.log(this.credentials);
     this.a.activate(this.credentials).subscribe(
       data => {
         this.router.navigate(['/login']);

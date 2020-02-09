@@ -28,20 +28,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(): void {
-    console.log(this.credentials);
-
     // Clear the existing toke
     localStorage.removeItem('access-token');
     // Attempt to login, by calling the login method of the auth service
     // Complete this method...
     this.a.login(this.credentials).subscribe(c => {
       localStorage.setItem('access_token', c.token);
-      console.log(c);
       const tokenDecoded = this.jwtHelper.decodeToken(c.token);
       this.m.reqresUserGetById(tokenDecoded._id).subscribe(s => {
         this.m.setCurrentUser(s);
-        console.log('yerrrr');
-        console.log(this.m.getCurrentUser());
       });
     });
     // this.router.navigate(['/userContacts']);

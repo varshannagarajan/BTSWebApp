@@ -18,7 +18,6 @@ export class AppComponent {
         if (e instanceof NavigationEnd) {
           this.m.reqresUserGetById(this.m.currentUser._id).subscribe(s => {
             this.m.setCurrentUser(s);
-            console.log(this.m.getCurrentUser());
           });
         }
      });

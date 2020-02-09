@@ -17,7 +17,6 @@ export class EventUpdateComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.params._id;
     this.m.eventsGetById(id).subscribe((e) => {
-      console.log(e);
       this.event = e;
       this.m.eventSet(this.event);
     });
@@ -25,7 +24,6 @@ export class EventUpdateComponent implements OnInit {
 
   ngDoCheck() {
     this.m.eventSet(this.event);
-    console.log(this.event);
   }
 
   onSubmit() {

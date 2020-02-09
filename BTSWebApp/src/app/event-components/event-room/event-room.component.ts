@@ -50,7 +50,6 @@ export class EventRoomComponent implements OnInit {
     this.router.navigate(['/userRead/' + c]);
     /*this.m.reqresUserGetByUsername(c).subscribe(s => {
       this.id = s._id;
-      console.log(this.id);
       this.router.navigateByUrl('/userRead/'+ s._id);
     });
     */

@@ -10,7 +10,6 @@ export class ImageUploadService {
   constructor(private http: HttpClient) {}
 
   imageUpload(imageForm: FormData) {
-    console.log('image uploading');
     return this.http.post(`${this.url}users/upload-picture`, imageForm); // change this to a function in user.service
   }
 }

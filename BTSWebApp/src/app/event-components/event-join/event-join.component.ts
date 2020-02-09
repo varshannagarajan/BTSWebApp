@@ -26,18 +26,13 @@ export class EventJoinComponent implements OnInit {
     this.newAttendee.user_lastName = this.u.currentUser.user_lastName;
     this.newAttendee.attendee_id = this.generateID();
 
-    console.log(this.newAttendee);
-
     this.e.eventAddAttendee(this.eventCode, this.newAttendee).subscribe(msg => {
       this.u.addEventToUser(this.eventCode).subscribe(s => {
         this.e.eventGetByCode(this.eventCode).subscribe(s => {
           this.eventID = s._id;
           this.router.navigate(['/eventRoom/', this.eventID]);
         });
-        console.log(msg);
-      
       });
-      
     });
   }
 
