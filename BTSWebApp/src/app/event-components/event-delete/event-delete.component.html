@@ -10,9 +10,9 @@
         <input class="form-control" id="ev_ID" name="ev_ID" [(ngModel)]="event._id" required autofocus />
       </div>
 
-      <a class="btn btn-default" routerLink="/home">Back to home</a>&nbsp;&nbsp;
+      <button mat-raised-button color="accent" routerLink="/home">Back to home</button>
       <!-- <button class="btn btn-default" (click)='logout()'>Logout</button> -->
-      <button class="btn btn-primary" type="submit">Delete</button>&nbsp;&nbsp;
+      <button mat-raised-button color="accent" type="submit">Delete</button>&nbsp;&nbsp;
 
      <!--<span *ngIf="loginError.length > 0" class="text-danger">{{ loginError }}</span>-->
     </form>

@@ -21,6 +21,5 @@ export class UserDeleteComponent implements OnInit {
   // Methods
   onSubmit(): void {
     this.u.deleteUser(this.credentials).subscribe();
-    // console.log(this.credentials);
   }
 }

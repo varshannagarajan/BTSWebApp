@@ -23,16 +23,13 @@ export class EventFeedComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.m.getCurrentUser();
-    console.log(this.m.getCurrentUser());
     /*
     this.e.getUsersEvents(this.user.user_email).subscribe(s => {
       this.userEvents = s;
-      console.log(this.userEvents);
     });
     */
     for (let i = 0; i < this.user.user_eventsList.length; i++) {
       this.e.eventGetByCode(this.user.user_eventsList[i]).subscribe(s => {
-        console.log(s);
         this.userEvents.push(s);
       });
     }

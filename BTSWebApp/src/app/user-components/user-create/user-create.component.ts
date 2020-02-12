@@ -39,10 +39,6 @@ export class UserCreateComponent implements OnInit {
     this.user.user_employmentInfo.organizationAddress.city = 'Toronto';
     this.user.user_employmentInfo.organizationAddress.province = 'ON';
     this.user.user_employmentInfo.organizationAddress.country = 'Canada';
-    
-
-    
-
   }
 
   ngOnInit() {}
@@ -50,7 +46,6 @@ export class UserCreateComponent implements OnInit {
   onSubmit(): void {
     this.a.create(this.user).subscribe(
       data => {
-        console.log(this.user);
         this.router.navigate(['/userActivate']);
       },
       error => {

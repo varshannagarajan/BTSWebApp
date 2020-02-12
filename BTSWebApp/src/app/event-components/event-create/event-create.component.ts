@@ -20,20 +20,15 @@ export class EventCreateComponent implements OnInit {
     this.newEvent = new Events();
     this.newEvent.ev_name = '';
     this.currentUser = this.um.currentUser;
-    console.log(this.currentUser.user_firstName);
   }
 
   ngOnInit() {
-    // this.currentUser = this.um.getCurrentUser();
-    // console.log(this.newEvent.ev_name);
-    // console.log(this.currentUser.user_firstName);
   }
 
   // Methods
   onSubmit(): void {
     // this.newEvent.ev_coordinator = this.currentUser.user_email;
     this.em.eventsCreate(this.newEvent).subscribe(data => {
-      console.log('Event Created');
     });
   }
 }

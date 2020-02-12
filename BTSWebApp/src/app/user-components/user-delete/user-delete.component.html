@@ -11,15 +11,10 @@
         <input class="form-control" id="ev_ID" name="ev_ID" [(ngModel)]="credentials.user_password" required autofocus />
       </div>
 
-      <a class="btn btn-default" routerLink="/home">Back to home</a>&nbsp;&nbsp;
+      <button mat-raised-button color="accent" routerLink="/home">Back to home</button>&nbsp;&nbsp;
       <!-- <button class="btn btn-default" (click)='logout()'>Logout</button> -->
-      <button class="btn-success" (click)="(onSubmit)">Delete</button>&nbsp;&nbsp;
-
+      <button mat-raised-button color="accent" (click)="(onSubmit)">Delete</button>&nbsp;&nbsp;
       <!--<span *ngIf="loginError.length > 0" class="text-danger">{{ loginError }}</span>-->
     </form>
   </div>
 </div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>

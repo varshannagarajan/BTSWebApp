@@ -3,7 +3,7 @@
   <div class="container">
     <div class="table-responsive">
       <div class="col-md-6">
-        <h4>Welcome {{ user.user_firstName }} {{ user.user_lastName }}!</h4> 
+        <h4>Welcome {{ user.user_firstName }} {{ user.user_lastName }}!</h4>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -16,7 +16,7 @@
                 <tr class="row1" *ngFor="let e of userEvents">
                     <td>{{e.ev_name}}</td>
                     <td>{{getDate(e.ev_date) | date: "mediumDate"}}</td>
-                    <td><button class="btn btn-default" (click)="viewEvent(e.ev_code)">View</button></td>                    
+                    <td><button mat-raised-button color="accent" (click)="viewEvent(e.ev_code)">View</button></td>
                 </tr>
             </tbody>
         </table>

@@ -30,8 +30,6 @@ export class UserUpdateComponent implements OnInit {
     private imageUploadService: ImageUploadService
     ) {
     this.user = _.cloneDeep(this.m.currentUser, true);
-    console.log(this.user);
-
   }
 
   ngOnInit() {}
@@ -44,19 +42,17 @@ export class UserUpdateComponent implements OnInit {
   onImageUpload(profilePicture: Boolean) {
     const imageForm = new FormData();
     const imageExtension = this.imageObj.name.substr(this.imageObj.name.lastIndexOf('.'));
-    var imageName = String();
-    
-    if(profilePicture) {
+    let imageName = String();
+
+    if (profilePicture) {
       imageName = this.user.user_email + imageExtension;
     } else {
-      imageName = this.user.user_email + "-logo" + imageExtension;
+      imageName = this.user.user_email + '-logo' + imageExtension;
     }
-    
-  
+
     imageForm.append('image', this.imageObj, imageName);
     this.imageUploadService.imageUpload(imageForm).subscribe(res => {
       this.imageUrl = res['image'];
-
       this.addPictureURLToUser(profilePicture);
     });
   }
@@ -64,8 +60,8 @@ export class UserUpdateComponent implements OnInit {
   addPictureURLToUser(isProfilePicture: Boolean) {
     const pictureURL = new PictureURL();
     pictureURL.userEmail = this.user.user_email;
-    pictureURL.pictureURL = "https://mesh-user-profile-pictures.s3.amazonaws.com/" + this.imageUrl;
-    if(isProfilePicture) {
+    pictureURL.pictureURL = 'https://mesh-user-profile-pictures.s3.amazonaws.com/' + this.imageUrl;
+    if (isProfilePicture) {
       this.m.addProfilePicture(pictureURL).subscribe();
     } else {
       this.m.addLogoPicture(pictureURL).subscribe();
@@ -73,10 +69,8 @@ export class UserUpdateComponent implements OnInit {
   }
   // Methods
   onSubmit(): void {
-    this.user.user_employmentInfo.occupation = "Manager";
-    console.log(this.user.user_employmentInfo.occupation);
+    this.user.user_employmentInfo.occupation = 'Manager';
     this.m.updateUser(this.user).subscribe();
     this.router.navigate(['/userContacts/']);
-    console.log(this.user);
   }
 }

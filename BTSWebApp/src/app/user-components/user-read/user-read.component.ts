@@ -14,9 +14,7 @@ export class UserReadComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('_id');
-    console.log(this.id);
     this.u.reqresUserGetByUsername(this.id).subscribe(s => {
-      console.log(s);
       this.setViewUser(s);
     });
   }

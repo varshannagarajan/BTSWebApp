@@ -36,7 +36,6 @@ export class UserContactsComponent implements OnInit {
     this.user = this.m.getCurrentUser();
     this.getAllUserContacts();
     this.filteredContacts = this.contacts;
-    console.log(this.m.getCurrentUser());
   }
 
   viewContact(c: string) {
@@ -47,7 +46,6 @@ export class UserContactsComponent implements OnInit {
     const del = new DeleteContact();
     del.usersEmail = this.user.user_email;
     del.emailToDelete = c;
-    console.log(del);
     this.m.deleteContact(del).subscribe(s => {
       // this.filteredContacts = this.contacts;
     });
@@ -70,7 +68,6 @@ export class UserContactsComponent implements OnInit {
       this.getContact(this.user.user_contacts[i])
         .then(contact => {
           this.contacts.push(contact);
-          console.log('Contact: ' + contact);
         })
         .catch(err => {
           console.log(err);
@@ -85,14 +82,12 @@ export class UserContactsComponent implements OnInit {
         filteredContacts = this.contacts.filter(
           contact => contact.user_firstName == searchValue
         );
-        console.log('name');
         break;
       }
       case 'company': {
         filteredContacts = this.contacts.filter(
           contact => contact.user_employmentInfo['organization'] == searchValue
         );
-        console.log('company');
         break;
       }
       case 'event': {
@@ -101,11 +96,9 @@ export class UserContactsComponent implements OnInit {
             contact.user_eventsList.includes(searchValue) &&
             this.user.user_eventsList.includes(searchValue)
         );
-        console.log('event found');
         break;
       }
       default: {
-        console.log('fail');
         break;
       }
     }
