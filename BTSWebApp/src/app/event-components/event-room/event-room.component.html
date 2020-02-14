@@ -23,8 +23,6 @@
       </mat-card-content>
     </mat-card>
     <h4>Attendees</h4>
-    <div *ngFor="let attendee of attendeeUsers">
-      <app-business-card [userOB]="attendee"></app-business-card>
-    </div>
+    <app-business-exp-panel [userOB]="attendeeUsers"></app-business-exp-panel>
   </div>
 </div>

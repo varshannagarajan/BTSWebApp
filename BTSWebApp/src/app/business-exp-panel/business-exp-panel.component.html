@@ -1,0 +1,52 @@
+<button mat-raised-button color="accent" (click)="accordion.openAll()">
+  Expand All
+</button>
+&nbsp;
+<button mat-raised-button color="accent" (click)="accordion.closeAll()">
+  Collapse All
+</button>
+<br />
+<mat-accordion [multi]="true" #accordion="matAccordion">
+  <mat-expansion-panel *ngFor="let user of userOB" class="business-exp-panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <img
+          class="avatar"
+          *ngIf="user.user_logoPicture"
+          src="{{ user.user_logoPicture }}"
+        />
+        &nbsp;
+        {{ user.user_firstName }} {{ user.user_lastName }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ user.user_employmentInfo.occupation }},
+        {{ user.user_employmentInfo.organization }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="business-card-info">
+          <h5>Biography: </h5><p>{{ user.user_bio }}</p>
+          <h5>Email: </h5><p><a href="mailto:{{ user.user_email }}">{{ user.user_email }}</a></p>
+          <h5>Phone Number: </h5><p>{{ user.user_contactInfo.phoneNumber }}</p>
+          <h5>LinkedIn: </h5><p><a href="{{ user.user_contactInfo.linkedIn }}" target="_blank">{{ user.user_contactInfo.linkedIn }}</a></p>
+          <h5>Twitter: </h5><p><a href="{{ user.user_contactInfo.twitter }}" target="_blank">{{ user.user_contactInfo.twitter }}</a></p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="business-card">
+          <img
+            *ngIf="user.user_profilePicture"
+            src="{{ user.user_profilePicture }}"
+            class="profilePhoto"
+          />
+        </div>
+      </div>
+    </div>
+
+    <mat-action-row>
+      <button mat-raised-button color="accent">Contact</button>
+      <!-- <button mat-raised-button color="accent" (click)="addContact(attendee.attendee_id)">Add</button> -->
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
