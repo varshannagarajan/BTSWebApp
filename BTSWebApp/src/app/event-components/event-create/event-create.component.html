@@ -1,40 +1,100 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8 col-sm-12">
-    <h4>Create Event</h4>
+    <h2>Create Event</h2>
+    <hr>
     <form (ngSubmit)="onSubmit()" #f="ngForm">
       <!-- Edit to make this an Angular template-driven form -->
 
-      <div class="form-group">
-        <label class="control-label" for="ev_name">Event name:</label>
-        <input
+      <mat-form-field class="eventInfo" appearance="fill">
+        <mat-label>Name</mat-label>
+          <input matInput          
           class="form-control"
           id="ev_name"
           name="ev_name"
           minlength="3"
           maxlength="30"
           [(ngModel)]="newEvent.ev_name"
-          required
-          autofocus
-        />
-      </div>
-
-      <div class="form-group">
-        <label class="control-label" for="ev_company">Company:</label>
-        <input class="form-control" id="ev_company" name="ev_company" [(ngModel)]="newEvent.ev_company" />
-      </div>
-
-      <div class="form-group">
-        <label class="control-label" for="ev_description">Description:</label>
-        <input
+          required>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="eventInfo" appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select [(ngModel)]="category" [ngModelOptions]="{standalone: true}">
+          <mat-option value="business">Business</mat-option>
+          <mat-option value="tech">Tech</mat-option>
+          <mat-option value="sports">Sports</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="eventInfo" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput
           class="form-control"
           id="ev_description"
           name="ev_description"
           [(ngModel)]="newEvent.ev_description"
-        />
-      </div>
+          required>
+        </textarea>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="eventInfo" appearance="fill">
+        <mat-label>Company</mat-label>
+        <input matInput
+          class="form-control"
+          id="ev_company"
+          name="ev_company"
+          [(ngModel)]="newEvent.ev_company"
+          required>
+      </mat-form-field>
+      <br>
+      <h4>Time</h4>
+      <hr>
+      <mat-form-field class="eventTime">
+        <input matInput [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}" type="datetime-local" placeholder="Start time">
+      </mat-form-field>
+      <mat-form-field class="eventTime">
+        <input matInput [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}" type="datetime-local" placeholder="End time">
+      </mat-form-field>
+      <br>
 
-      <button mat-raised-button color="accent" routerLink="/home">Back to home</button>
+      <h4>Adress</h4>
+      <hr>
+      <mat-form-field class="eventInfo" appearance="fill">
+        <mat-label>Street</mat-label>
+          <input matInput          
+          class="form-control"
+          [(ngModel)]="street" [ngModelOptions]="{standalone: true}"
+          required>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="eventInfo" appearance="fill">
+        <mat-label>Postal Code</mat-label>
+          <input matInput          
+          class="form-control"
+          minlength="6"
+          maxlength="6"
+          [(ngModel)]="postalCode" [ngModelOptions]="{standalone: true}"
+          required>
+      </mat-form-field>
+      <mat-form-field class="eventInfo" appearance="fill">
+        <mat-label>City</mat-label>
+          <input matInput          
+          class="form-control"
+          [(ngModel)]="city" [ngModelOptions]="{standalone: true}"
+          required>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="eventInfo" appearance="fill">
+        <mat-label>Province</mat-label>
+        <mat-select [(ngModel)]="category" [ngModelOptions]="{standalone: true}">
+          <mat-option value="ON">Ontario</mat-option>
+          <mat-option value="BC">British Columbia</mat-option>
+          <mat-option value="QC">Quebec</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+
       <!-- <button class="btn btn-default" (click)='logout()'>Logout</button> -->
       <button mat-raised-button color="accent" type="submit">Create</button>&nbsp;&nbsp;
 
