@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-md-2"></div>
-
-  <div class="col-md-13">
+  <div class="col-md-9" *ngIf="event">
     <google-map *ngIf="center"
       height="400px"
       width="100%" 
@@ -18,8 +17,6 @@
       </map-marker>
       <map-info-window>{{ infoContent }}</map-info-window>
     </google-map>
-  </div>
-  <div class="col-md-9" *ngIf="event">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
