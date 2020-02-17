@@ -39,6 +39,12 @@ export class UserCreateComponent implements OnInit {
     this.user.user_employmentInfo.organizationAddress.city = 'Toronto';
     this.user.user_employmentInfo.organizationAddress.province = 'ON';
     this.user.user_employmentInfo.organizationAddress.country = 'Canada';
+
+    this.user.user_contactInfo.facebook = '';
+    this.user.user_contactInfo.instagram = '';
+    this.user.user_contactInfo.linkedIn = '';
+    this.user.user_contactInfo.phoneNumber = '';
+    this.user.user_contactInfo.twitter = '';
   }
 
   ngOnInit() {}

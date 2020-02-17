@@ -105,6 +105,31 @@
         <input class="form-control" id="user_bio" [(ngModel)]="user.user_bio" name="bio" />
       </div>
 
+      <div class="form-group">
+        <label class="control-label" for="facebook">Facebook:</label>
+        <input class="form-control" id="user_facebook" [(ngModel)]="user.user_contactInfo.facebook" name="facebook" />
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="instagram">Instagram:</label>
+        <input class="form-control" id="user_instagram" [(ngModel)]="user.user_contactInfo.instagram" name="instagram" />
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="linkedIn">LinkedIn:</label>
+        <input class="form-control" id="user_linkedIn" [(ngModel)]="user.user_contactInfo.linkedIn" name="linkedIn" />
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="twitter">Twitter:</label>
+        <input class="form-control" id="user_twitter" [(ngModel)]="user.user_contactInfo.twitter" name="twitter" />
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="phoneNumber">Phone Number:</label>
+        <input class="form-control" id="user_phoneNumber" [(ngModel)]="user.user_contactInfo.phoneNumber" name="phoneNumber" />
+      </div>
+
       <button mat-raised-button color="accent" routerLink="/home">Back to home</button>&nbsp;&nbsp;
       <!-- <button class="btn btn-default" (click)='logout()'>Logout</button> -->
       <button mat-raised-button color="accent" type="submit">Create</button>&nbsp;&nbsp;
