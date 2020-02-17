@@ -1,6 +1,22 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-9" *ngIf="event">
+    <google-map *ngIf="center"
+      height="400px"
+      width="100%" 
+      [center]="center">
+
+      <map-marker
+        #markerElem
+        *ngFor="let marker of markers"
+          [position]="marker.position"
+          [label]="marker.label"
+          [title]="marker.title"
+          [options]="marker.options"
+          (mapClick)="openMarkerInfo(markerElem, marker.info)">
+      </map-marker>
+      <map-info-window>{{ infoContent }}</map-info-window>
+    </google-map>
     <mat-card>
       <mat-card-header>
         <mat-card-title>

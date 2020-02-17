@@ -62,6 +62,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -145,7 +146,8 @@ export class MaterialModule {}
         tokenGetter,
         authScheme: 'JWT'
       }
-    })
+    }),
+    GoogleMapsModule,
   ],
   exports: [EventRoomComponent],
   providers: [
