@@ -1,0 +1,22 @@
+.business-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.profilePhoto {
+  flex: right;
+  max-width: 75%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.business-card-info{
+  flex: left;
+}

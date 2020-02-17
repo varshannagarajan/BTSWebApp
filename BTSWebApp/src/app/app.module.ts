@@ -63,6 +63,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { BusinessExpPanelComponent } from './business-exp-panel/business-exp-panel.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -101,6 +102,7 @@ export function tokenGetter() {
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
+    MatExpansionModule,
     MatPaginatorModule
   ]
 })
@@ -131,7 +133,8 @@ export class MaterialModule {}
     EventJoinComponent,
     EventFeedComponent,
     EventSearchComponent,
-    BusinessCardComponent
+    BusinessCardComponent,
+    BusinessExpPanelComponent
   ],
   imports: [
     FormsModule,
