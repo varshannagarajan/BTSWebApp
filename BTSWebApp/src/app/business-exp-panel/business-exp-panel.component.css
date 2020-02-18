@@ -20,3 +20,11 @@
 .business-card-info{
   flex: left;
 }
+
+.panel-container{
+  margin: 25px;
+}
+
+.business-exp-panel{
+  min-width: 250px;
+}
