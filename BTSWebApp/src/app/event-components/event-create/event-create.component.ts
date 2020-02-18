@@ -5,6 +5,7 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../classes/user';
 import {FormControl} from '@angular/forms';
 import { Address } from 'src/app/classes/address';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-create',
@@ -35,14 +36,15 @@ export class EventCreateComponent implements OnInit {
 
   constructor(
     private em: EventService,
-    private um: UserService
+    private um: UserService,
+    private router: Router
   ) {
     this.newEvent = new Events();
     this.newEvent.ev_name = '';
     this.currentUser = this.um.currentUser;
     this.newEvent.ev_category = [];
     this.category = "";
-    this.newEvent.ev_date = {start: "", end: ""};
+    //this.newEvent.ev_date = {start: "", end: ""};
     this.newEvent.ev_address = new Address;
     this.newEvent.ev_address.street = "";
     this.newEvent.ev_address.postalCode = "";
@@ -60,8 +62,8 @@ export class EventCreateComponent implements OnInit {
       this.newEvent.ev_category.push(this.category);
     }
     this.newEvent.ev_code = this.generateID();
-    this.newEvent.ev_date.start = this.startDate;
-    this.newEvent.ev_date.end = this.endDate;
+    //this.newEvent.ev_date.start = this.startDate;
+    //this.newEvent.ev_date.end = this.endDate;
     this.newEvent.ev_coordinator = this.um.getCurrentUser().user_email;
     this.newEvent.ev_attendees = [];
     this.newEvent.ev_photo = "";
@@ -74,9 +76,15 @@ export class EventCreateComponent implements OnInit {
     this.newEvent.ev_address.country = "Canada";
     
 
-    console.log(this.newEvent);
-    // this.em.eventsCreate(this.newEvent).subscribe(data => {
-    // });
+    // console.log(this.newEvent);
+    this.em.eventsCreate(this.newEvent).subscribe(
+      data => {
+        this.router.navigate(['/home']);
+      },
+      error => {
+        
+      }
+    );
   }
 
   generateID(): string {

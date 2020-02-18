@@ -22,8 +22,8 @@
             <div *ngFor="let cat of event.ev_category">
               <td>{{ cat }}</td>
             </div>
-            <td>{{ event.ev_date.start | date: "medium" }}</td>
-            <td>{{ event.ev_date.end | date: "medium" }}</td>
+            <td *ngIf="event.ev_date" >{{ event.ev_date.start | date: "medium" }}</td>
+            <td *ngIf="event.ev_date" >{{ event.ev_date.end | date: "medium" }}</td>
             <td>
               {{ event.ev_address.street }} {{ event.ev_address.postalCode }}
               {{ event.ev_address.city }} {{ event.ev_address.province }}
