@@ -89,4 +89,11 @@ export class EventReadComponent implements OnInit {
     this.info.open(marker)
   }
 
+  checkIfUserIsCoordinator(): Boolean {
+    if(this.event.ev_coordinator == this.u.currentUser.user_email) {
+      return true;
+    }
+    return false;
+  }
+
 }

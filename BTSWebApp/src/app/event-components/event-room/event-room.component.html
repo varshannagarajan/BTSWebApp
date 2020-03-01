@@ -21,6 +21,7 @@
       <mat-card-header>
         <mat-card-title>
           {{ event.ev_name }} (Event ID: {{ event._id }})
+          <button *ngIf="checkIfUserIsCoordinator()" mat-raised-button color="accent" [routerLink]="['/eventUpdate', event._id]" routerLinkActive="active">Edit</button>
         </mat-card-title>
         <mat-card-subtitle>
           {{ event.ev_description }}

@@ -117,6 +117,14 @@ export class EventRoomComponent implements OnInit {
     this.infoContent = content
     this.info.open(marker)
   }
+
+  checkIfUserIsCoordinator(): Boolean {
+    if(this.event.ev_coordinator == this.u.currentUser.user_email) {
+      return true;
+    }
+    return false;
+  }
+
 }
 
 export class EventAttendee {
