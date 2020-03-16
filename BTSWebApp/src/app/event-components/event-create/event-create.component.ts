@@ -5,6 +5,8 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../classes/user';
 import {FormControl} from '@angular/forms';
 import { Address } from 'src/app/classes/address';
+import { Attendee } from '../../classes/attendees';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-create',
@@ -35,7 +37,8 @@ export class EventCreateComponent implements OnInit {
 
   constructor(
     private em: EventService,
-    private um: UserService
+    private um: UserService,
+    private router: Router
   ) {
     this.newEvent = new Events();
     this.newEvent.ev_name = '';
@@ -59,7 +62,8 @@ export class EventCreateComponent implements OnInit {
     if(this.category != ""){
       this.newEvent.ev_category.push(this.category);
     }
-    this.newEvent.ev_code = this.generateID();
+    let newEventCode = this.generateID();
+    this.newEvent.ev_code = newEventCode;
     this.newEvent.ev_date.start = this.startDate;
     this.newEvent.ev_date.end = this.endDate;
     this.newEvent.ev_coordinator = this.um.getCurrentUser().user_email;
@@ -73,10 +77,22 @@ export class EventCreateComponent implements OnInit {
     // Change when other countries are added
     this.newEvent.ev_address.country = "Canada";
     
-
+    let newAttendee = new Attendee();
+    newAttendee.user_email = this.currentUser.user_email;
+    newAttendee.user_firstName = this.currentUser.user_firstName;
+    newAttendee.user_lastName = this.currentUser.user_lastName;
+    newAttendee.attendee_id = this.generateID();
+ 
     console.log(this.newEvent);
-    // this.em.eventsCreate(this.newEvent).subscribe(data => {
-    // });
+    this.em.eventsCreate(this.newEvent).subscribe(createdEvent => {
+      this.em.eventAddAttendee(newEventCode, newAttendee).subscribe(msg => {
+        this.um.addEventToUser(newEventCode).subscribe(s => {
+          let eventCode = newEventCode;
+          let urlToRedirectTo = "/eventRead/" + eventCode;
+          this.router.navigateByUrl(urlToRedirectTo);
+        });
+      });
+    });
   }
 
   generateID(): string {

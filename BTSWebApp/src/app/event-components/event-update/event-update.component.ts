@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Events } from '../../classes/events';
 import { EventService } from '../../services/event.service';
 
@@ -12,7 +12,7 @@ export class EventUpdateComponent implements OnInit {
   id: string;
   event: Events;
 
-  constructor(private route: ActivatedRoute, private m: EventService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private m: EventService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.params._id;
@@ -21,7 +21,7 @@ export class EventUpdateComponent implements OnInit {
       this.m.eventSet(this.event);
     });
   }
-
+å
   ngDoCheck() {
     this.m.eventSet(this.event);
   }
@@ -29,6 +29,8 @@ export class EventUpdateComponent implements OnInit {
   onSubmit() {
     this.m.eventsUpdate(this.event).subscribe((data) => {
       console.log('Event Updated');
+      let urlToRedirectTo = "/eventRead/" + this.event.ev_code;
+      this.router.navigateByUrl(urlToRedirectTo);
     });
   }
 
