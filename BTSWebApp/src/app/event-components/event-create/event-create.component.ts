@@ -3,8 +3,8 @@ import { Events } from '../../classes/events';
 import { EventService } from '../../services/event.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../classes/user';
-import {FormControl} from '@angular/forms';
 import { Address } from 'src/app/classes/address';
+import { Attendee } from '../../classes/attendees';
 import { Router } from '@angular/router';
 
 @Component({
@@ -61,9 +61,10 @@ export class EventCreateComponent implements OnInit {
     if(this.category != ""){
       this.newEvent.ev_category.push(this.category);
     }
-    this.newEvent.ev_code = this.generateID();
-    //this.newEvent.ev_date.start = this.startDate;
-    //this.newEvent.ev_date.end = this.endDate;
+    let newEventCode = this.generateID();
+    this.newEvent.ev_code = newEventCode;
+    this.newEvent.ev_date.start = this.startDate;
+    this.newEvent.ev_date.end = this.endDate;
     this.newEvent.ev_coordinator = this.um.getCurrentUser().user_email;
     this.newEvent.ev_attendees = [];
     this.newEvent.ev_photo = "";
@@ -75,16 +76,22 @@ export class EventCreateComponent implements OnInit {
     // Change when other countries are added
     this.newEvent.ev_address.country = "Canada";
     
-
-    // console.log(this.newEvent);
-    this.em.eventsCreate(this.newEvent).subscribe(
-      data => {
-        this.router.navigate(['/home']);
-      },
-      error => {
-        
-      }
-    );
+    let newAttendee = new Attendee();
+    newAttendee.user_email = this.currentUser.user_email;
+    newAttendee.user_firstName = this.currentUser.user_firstName;
+    newAttendee.user_lastName = this.currentUser.user_lastName;
+    newAttendee.attendee_id = this.generateID();
+ 
+    console.log(this.newEvent);
+    this.em.eventsCreate(this.newEvent).subscribe(createdEvent => {
+      this.em.eventAddAttendee(newEventCode, newAttendee).subscribe(msg => {
+        this.um.addEventToUser(newEventCode).subscribe(s => {
+          let eventCode = newEventCode;
+          let urlToRedirectTo = "/eventRead/" + eventCode;
+          this.router.navigateByUrl(urlToRedirectTo);
+        });
+      });
+    });
   }
 
   generateID(): string {
