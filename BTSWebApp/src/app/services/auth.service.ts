@@ -4,6 +4,7 @@ import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
 import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -37,8 +38,9 @@ export class AuthService {
   userProfile$ = this.userProfileSubject$.asObservable();
   // Create a local property for login status
   loggedIn: boolean = null;
+  currUser: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private us: UserService) {
     // On initial load, check authentication state with authorization server
     // Set up local auth streams if user is already authenticated
     this.localAuthSetup();
@@ -79,11 +81,7 @@ export class AuthService {
   }
 
   login(redirectPath: string = '/') {
-    // A desired redirect path can be passed to login method
-    // (e.g., from a route guard)
-    // Ensure Auth0 client instance exists
     this.auth0Client$.subscribe((client: Auth0Client) => {
-      // Call method to log in
       client.loginWithRedirect({
         redirect_uri: `${window.location.origin}`,
         appState: { target: redirectPath }
@@ -114,7 +112,17 @@ export class AuthService {
       // Response will be an array of user and login status
       authComplete$.subscribe(([user, loggedIn]) => {
         // Redirect to target route after callback processing
-        this.router.navigate([targetRoute]);
+        this.router.navigate([targetRoute]).then(token => {
+          this.userProfile$.subscribe(user => {
+            this.currUser = user;
+            console.log(this.currUser.email);
+            this.us.reqresUserGetByUsername(this.currUser.email).subscribe(userObj =>{
+              this.us.currentUser = userObj;
+              console.log(userObj);
+             }
+            );
+          });
+        });
       });
     }
   }
