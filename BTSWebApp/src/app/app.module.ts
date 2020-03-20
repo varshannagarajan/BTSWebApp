@@ -36,6 +36,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BusinessCardComponent } from './business-card/business-card.component';
@@ -57,6 +58,7 @@ import { UserContactsComponent } from './user-components/user-contacts/user-cont
 import { UserDeleteComponent } from './user-components/user-delete/user-delete.component';
 import { UserReadComponent } from './user-components/user-read/user-read.component';
 import { UserUpdateComponent } from './user-components/user-update/user-update.component';
+import { UserCreateComponent } from './user-components/user-create/user-create.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -111,6 +113,7 @@ export class MaterialModule {}
     UserReadComponent,
     UserUpdateComponent,
     UserDeleteComponent,
+    UserCreateComponent,
     NavbarComponent,
     HomeComponent,
     InvalidRouteComponent,
@@ -133,6 +136,7 @@ export class MaterialModule {}
     HttpClientModule,
     AppRoutingModule,
     Ng2SearchPipeModule,
+    NgbModule,
     MaterialModule,
     JwtModule.forRoot({
       config: {

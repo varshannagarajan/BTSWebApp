@@ -19,6 +19,7 @@ import { UserUpdateComponent } from './user-components/user-update/user-update.c
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
 import { AuthGuard } from './services/guard-auth.service';
+import { UserCreateComponent } from './user-components/user-create/user-create.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'eventJoin', component: EventJoinComponent },
   { path: 'eventRoom/:_id', component: EventRoomComponent },
   { path: 'eventFeed', component: EventFeedComponent },
+  { path: 'userCreate', component: UserCreateComponent },
   { path: 'userRead/:_id', component: UserReadComponent },
   { path: 'userUpdate', component: UserUpdateComponent },
   { path: 'userDelete', component: UserDeleteComponent },

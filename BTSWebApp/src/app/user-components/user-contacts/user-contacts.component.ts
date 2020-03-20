@@ -27,15 +27,24 @@ export class UserContactsComponent implements OnInit {
   filteredContacts = new Array();
   id: String;
   user: User;
+  staticAlertClosed = true;
+
   constructor(
     private m: UserService,
     private router: Router
-  ) {}
+  ) {
+    console.log('-----------------------');
+    console.log(this.user);
+
+  }
 
   ngOnInit() {
     this.user = this.m.getCurrentUser();
     this.getAllUserContacts();
     this.filteredContacts = this.contacts;
+    if(this.user.user_email.length > 0){
+      this.staticAlertClosed = false;
+    }
   }
 
   viewContact(c: string) {
@@ -104,6 +113,7 @@ export class UserContactsComponent implements OnInit {
     }
     return filteredContacts;
   }
+
 
   onSubmit(): void {
     // when the search button is clicked

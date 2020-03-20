@@ -5,6 +5,7 @@ import { Contact } from '../../classes/contact';
 import { AuthService } from '../../services/auth.service';
 import { EmploymentInfo } from 'src/app/classes/employment-info';
 import { Address } from 'src/app/classes/address';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-create',
@@ -14,7 +15,7 @@ export class UserCreateComponent implements OnInit {
   user: User;
   createError: string;
 
-  constructor(private a: AuthService, private router: Router) {
+  constructor(private a: AuthService, private router: Router, private u: UserService) {
     this.user = new User();
     this.user.user_email = '';
     this.user.user_firstName = '';

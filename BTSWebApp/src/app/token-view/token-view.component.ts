@@ -13,7 +13,6 @@ export class TokenViewComponent {
   constructor(private jwtHelper: JwtHelperService) {
     // Fetch the token from the browser's local storage
     this.tokenRaw = localStorage.getItem('access_token');
-
     // If it exists, decode it, otherwise, create placeholder values for the view
     if (this.tokenRaw) {
       this.tokenDecoded = this.jwtHelper.decodeToken(this.tokenRaw);

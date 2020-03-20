@@ -141,6 +141,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "BTSWebApp"
+    }
+  },
+  "defaultProject": "BTSWebApp",
+  "cli": {
+    "analytics": false
+  }
 }
