@@ -5,6 +5,7 @@ import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from
 import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { UserService } from './user.service';
+import { User } from '../classes/user';
 
 @Injectable({
   providedIn: 'root'
@@ -117,6 +118,9 @@ export class AuthService {
             this.currUser = user;
             console.log(this.currUser.email);
             this.us.reqresUserGetByUsername(this.currUser.email).subscribe(userObj =>{
+              if(userObj == null){
+                userObj = new User();
+              }
               this.us.currentUser = userObj;
               console.log(userObj);
              }

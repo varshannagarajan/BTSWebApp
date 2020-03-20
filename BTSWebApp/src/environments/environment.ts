@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // url: 'https://btsgroup11webservices.herokuapp.com/api/'
-  url: 'http://localhost:8080/api/'
+  url: 'https://btsgroup11webservices.herokuapp.com/api/'
+  // url: 'http://localhost:8080/api/'
 };
 
 /*

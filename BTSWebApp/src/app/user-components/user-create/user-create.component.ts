@@ -14,10 +14,13 @@ import { UserService } from 'src/app/services/user.service';
 export class UserCreateComponent implements OnInit {
   user: User;
   createError: string;
+  currUser: any;
 
   constructor(private a: AuthService, private router: Router, private u: UserService) {
     this.user = new User();
-    this.user.user_email = '';
+    this.a.userProfile$.subscribe(user => {
+      this.user.user_email = user.email;
+    });
     this.user.user_firstName = '';
     this.user.user_lastName = '';
     this.user.user_profilePicture = '';
@@ -51,9 +54,10 @@ export class UserCreateComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(): void {
-    this.a.create(this.user).subscribe(
+    this.u.create(this.user).subscribe(
       data => {
-        this.router.navigate(['/userActivate']);
+        this.u.setCurrentUser(this.user);
+        this.router.navigate(['/userContacts']);
       },
       error => {
         this.createError = error;

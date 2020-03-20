@@ -61,4 +61,8 @@ export class UserService {
   addEventToUser(ec: String) {
     return this.http.put(`${this.url}users/addEvent/${ec}`, this.currentUser);
   }
+
+  create(user: User): Observable<any> {
+    return this.http.post<any>(`${this.url}users`, user);
+  }
 }
