@@ -7,7 +7,6 @@ import { LoginComponent } from './login/login.component';
 import { TokenViewComponent } from './token-view/token-view.component';
 import { UserCreateComponent } from './user-components/user-create/user-create.component';
 import { HomeComponent } from './home/home.component';
-import { EventReadComponent } from './event-components/event-read/event-read.component';
 import { EventUpdateComponent } from './event-components/event-update/event-update.component';
 import { EventDeleteComponent } from './event-components/event-delete/event-delete.component';
 import { UserReadComponent } from './user-components/user-read/user-read.component';
@@ -25,7 +24,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'eventCreate', component: EventCreateComponent},
-  { path: 'eventRead/:_id', component: EventReadComponent},
   { path: 'eventUpdate/:_id', component: EventUpdateComponent},
   { path: 'eventDelete', component: EventDeleteComponent},
   { path: 'eventJoin', component: EventJoinComponent},

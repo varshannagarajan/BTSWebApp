@@ -20,7 +20,6 @@ import { UserDeleteComponent } from './user-components/user-delete/user-delete.c
 import { UserReadComponent } from './user-components/user-read/user-read.component';
 import { UserActivateComponent } from './user-components/user-activate/user-activate.component';
 import { UserCreateComponent } from './user-components/user-create/user-create.component';
-import { EventReadComponent } from './event-components/event-read/event-read.component';
 import { EventUpdateComponent } from './event-components/event-update/event-update.component';
 import { EventDeleteComponent } from './event-components/event-delete/event-delete.component';
 import { UserContactsComponent } from './user-components/user-contacts/user-contacts.component';
@@ -112,7 +111,6 @@ export class MaterialModule {}
   declarations: [
     AppComponent,
     EventCreateComponent,
-    EventReadComponent,
     EventUpdateComponent,
     EventDeleteComponent,
     UserCreateComponent,

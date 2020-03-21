@@ -1,28 +1,55 @@
 <div class="col-md-2"></div>
-<div class="col-md-9" *ngIf="user">
-  <div class="container">
-    <div class="table-responsive">
-      <div class="col-md-6">
-        <h4>Welcome {{ user.user_firstName }} {{ user.user_lastName }}!</h4>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                <th>Upcoming Events</th>
-                <th>Date</th>
-                <th>View</th>
-                </tr>
-            </thead>
-            <tbody class="tableBody">
-                <tr class="row1" *ngFor="let e of userEvents">
-                    <td>{{e.ev_name}}</td>
-                    <td>{{getDate(e.ev_date) | date: "mediumDate"}}</td>
-                    <td><button mat-raised-button color="accent" (click)="viewEvent(e.ev_code)">View</button></td>
-                </tr>
-            </tbody>
-        </table>
-
-      </div>
-    </div>
-  </div>
-  <div class="row"></div>
+<div class="col-md-8" *ngIf="user">
+  <h2>Welcome {{ user.user_firstName }} {{ user.user_lastName }}!</h2>
+  <h4>Here is a list of your upcoming events!</h4>
+  <input
+    class="form-control"
+    type="text"
+    [(ngModel)]="term"
+    placeholder="Search"
+  />
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Event Name:</th>
+        <th>Company:</th>
+        <th>Description:</th>
+        <th>Catergory</th>
+        <th>Start Date:</th>
+        <th>End Date:</th>
+        <th>Address:</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="tableBody">
+      <tr *ngFor="let event of userEvents | filter: term">
+        <td>{{ event.ev_name }}</td>
+        <td>{{ event.ev_company }}</td>
+        <td>{{ event.ev_description }}</td>
+        <div *ngFor="let cat of event.ev_category">
+          <td>{{ cat }}</td>
+        </div>
+        <td *ngIf="event.ev_date">
+          {{ event.ev_date.start | date: "medium" }}
+        </td>
+        <td *ngIf="event.ev_date">{{ event.ev_date.end | date: "medium" }}</td>
+        <td>
+          <a [href]="mapsLink(event.ev_address)" target="_blank">
+            {{ event.ev_address.street }} {{ event.ev_address.postalCode }}
+            {{ event.ev_address.city }} {{ event.ev_address.province }}
+            {{ event.ev_address.country }}</a
+          >
+        </td>
+        <td>
+          <button
+            mat-raised-button
+            color="accent"
+            (click)="viewEvent(event._id)"
+          >
+            View
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
