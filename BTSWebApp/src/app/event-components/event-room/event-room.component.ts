@@ -119,10 +119,7 @@ export class EventRoomComponent implements OnInit {
   }
 
   checkIfUserIsCoordinator(): Boolean {
-    if(this.event.ev_coordinator == this.u.currentUser.user_email) {
-      return true;
-    }
-    return false;
+    return this.event.ev_coordinator == this.u.currentUser.user_email;
   }
 
 }
