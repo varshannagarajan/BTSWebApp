@@ -1,144 +1,190 @@
-<div class="container">
-  <div class="row" *ngIf="user">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <h1>
-        Editing {{ user.user_firstName }} {{ user.user_lastName }}'s Profile
-      </h1>
-      <h5>Update account information and then press update</h5>
-      <hr />
-      <h4>Profile Picture</h4>
-      <input
-        (change)="onImagePicked($event)"
-        placeholder="Upload Image"
-        type="file"
-      />
-      <button mat-raised-button color="accent" (click)="onImageUpload(true)">
-        Upload Image
-      </button>
+<div class="col-md-2"></div>
+<div class="col-md-8" *ngIf="user">
+  <div class="row">
+    <h1>
+      Editing {{ user.user_firstName }} {{ user.user_lastName }}'s Profile
+    </h1>
+    <h5>Update account information and then press update</h5>
+    <hr />
 
-      <div *ngIf="imageUrl">
-        Preview of uploaded image
-        <br />
-        <img
-          width="200px"
-          src="https://mesh-user-profile-pictures.s3.amazonaws.com/{{
-            imageUrl
-          }}"
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Profile Picture</h4>
+        <input
+          (change)="onImagePicked($event)"
+          placeholder="Upload Image"
+          type="file"
         />
+        <button mat-raised-button color="accent" (click)="onImageUpload(true)">
+          Upload Image
+        </button>
+
+        <div *ngIf="imageUrl">
+          Preview of uploaded image
+          <br />
+          <img
+            width="200px"
+            src="https://mesh-user-profile-pictures.s3.amazonaws.com/{{
+              imageUrl
+            }}"
+          />
+        </div>
       </div>
 
-      <h4>Logo Picture</h4>
-      <input
-        (change)="onImagePicked($event)"
-        placeholder="Upload Logo"
-        type="file"
-      />
-      <button mat-raised-button color="accent" (click)="onImageUpload(false)">
-        Upload Logo
-      </button>
+      <div class="col-md-6">
+        <h4>Logo Picture</h4>
+        <input
+          (change)="onImagePicked($event)"
+          placeholder="Upload Logo"
+          type="file"
+        />
+        <button mat-raised-button color="accent" (click)="onImageUpload(false)">
+          Upload Logo
+        </button>
 
-      <div *ngIf="user.user_profilePicture">
-        Preview of already uploaded image
-        <br />
-        <img width="200px" src="{{ user.user_profilePicture }}" />
+        <div *ngIf="user.user_profilePicture">
+          Preview of already uploaded image
+          <br />
+          <img width="200px" src="{{ user.user_profilePicture }}" />
+        </div>
       </div>
-      <hr />
+    </div>
+
+    <hr />
+
+    <div class="row">
       <form (ngSubmit)="onSubmit()" #f="ngForm">
-        <!-- Edit to make this an Angular template-driven form -->
-
-        <div class="form-group">
-          <label class="control-label" for="firstName">First Name:</label>
-          <input
-            class="form-control"
-            id="user_firstName"
-            [(ngModel)]="user.user_firstName"
-            value="user.user_firstName"
-            name="firstName"
-            required
-          />
+        <div class="row">
+          <h4>
+            Personal Information
+          </h4>
+          <mat-form-field class="half">
+            <input
+              matInput
+              class="form-control"
+              id="user_firstName"
+              [(ngModel)]="user.user_firstName"
+              value="user.user_firstName"
+              name="firstName"
+              placeholder="First Name:"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field class="half">
+            <input
+              matInput
+              class="form-control"
+              id="user_lastName"
+              [(ngModel)]="user.user_lastName"
+              name="lastName"
+              placeholder="Last Name:"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field class="full">
+            <input
+              matInput
+              class="form-control"
+              id="user_bio"
+              [(ngModel)]="user.user_bio"
+              name="bio"
+              placeholder="Biography:"
+            />
+          </mat-form-field>
         </div>
 
-        <div class="form-group">
-          <label class="control-label" for="lastName">Last Name:</label>
-          <input
-            class="form-control"
-            id="user_lastName"
-            [(ngModel)]="user.user_lastName"
-            name="lastName"
-            required
-          />
+        <div class="row">
+          <h4>
+            Employment Information
+          </h4>
+          <mat-form-field class="half">
+            <input
+              matInput
+              class="form-control"
+              id="user_company"
+              [(ngModel)]="user.user_employmentInfo.organization"
+              name="company"
+              placeholder="Company:"
+            />
+          </mat-form-field>
+          <mat-form-field class="half">
+            <input
+              matInput
+              class="form-control"
+              id="user_occupation"
+              [(ngModel)]="user.user_employmentInfo.occupation"
+              name="occupation"
+              placeholder="Occupation:"
+            />
+          </mat-form-field>
         </div>
 
-        <div class="form-group">
-          <label class="control-label" for="bio">Biography:</label>
-          <input
-            class="form-control"
-            id="user_bio"
-            [(ngModel)]="user.user_bio"
-            name="bio"
-          />
+        <div class="row">
+          <h4>
+            Contact Information
+          </h4>
+          <mat-form-field class="half">
+            <input
+              matInput
+              class="form-control"
+              id="user_facebook"
+              [(ngModel)]="user.user_contactInfo.facebook"
+              name="facebook"
+              placeholder="Facebook:"
+            />
+          </mat-form-field>
+          <mat-form-field class="half">
+            <input
+              matInput
+              class="form-control"
+              id="user_instagram"
+              [(ngModel)]="user.user_contactInfo.instagram"
+              name="instagram"
+              placeholder="Instagram:"
+            />
+          </mat-form-field>
+          <mat-form-field class="half">
+            <input
+              matInput
+              class="form-control"
+              id="user_linkedIn"
+              [(ngModel)]="user.user_contactInfo.linkedIn"
+              name="linkedIn"
+              placeholder="LinkedIn:"
+            />
+          </mat-form-field>
+          <mat-form-field class="half">
+            <input
+              matInput
+              class="form-control"
+              id="user_twitter"
+              [(ngModel)]="user.user_contactInfo.twitter"
+              name="twitter"
+              placeholder="Twitter:"
+            />
+          </mat-form-field>
+          <mat-form-field class="full">
+            <input
+              matInput
+              class="form-control"
+              id="user_phoneNumber"
+              [(ngModel)]="user.user_contactInfo.phoneNumber"
+              name="phoneNumber"
+              placeholder="Phone Number:"
+            />
+          </mat-form-field>
         </div>
 
-        <div class="form-group">
-          <label class="control-label" for="company">Company:</label>
-          <input
-            class="form-control"
-            id="user_company"
-            [(ngModel)]="user.user_employmentInfo.organization"
-            name="company"
-          />
-        </div>
-
-        <div class="form-group">
-          <label class="control-label" for="occupation">Occupation:</label>
-          <input
-            class="form-control"
-            id="user_occupation"
-            [(ngModel)]="user.user_employmentInfo.occupation"
-            name="occupation"
-          />
-        </div>
-
-        <div class="form-group">
-          <label class="control-label" for="facebook">Facebook:</label>
-          <input class="form-control" id="user_facebook" [(ngModel)]="user.user_contactInfo.facebook" name="facebook" />
-        </div>
-
-        <div class="form-group">
-          <label class="control-label" for="instagram">Instagram:</label>
-          <input class="form-control" id="user_instagram" [(ngModel)]="user.user_contactInfo.instagram" name="instagram" />
-        </div>
-
-        <div class="form-group">
-          <label class="control-label" for="linkedIn">LinkedIn:</label>
-          <input class="form-control" id="user_linkedIn" [(ngModel)]="user.user_contactInfo.linkedIn" name="linkedIn" />
-        </div>
-
-        <div class="form-group">
-          <label class="control-label" for="twitter">Twitter:</label>
-          <input class="form-control" id="user_twitter" [(ngModel)]="user.user_contactInfo.twitter" name="twitter" />
-        </div>
-
-        <div class="form-group">
-          <label class="control-label" for="phoneNumber">Phone Number:</label>
-          <input class="form-control" id="user_phoneNumber" [(ngModel)]="user.user_contactInfo.phoneNumber" name="phoneNumber" />
-        </div>
-
-        <div class="buttonRow">
-          <button
-            mat-raised-button
-            color="accent"
-            routerLink="/userContacts"
-            routerLinkActive="active"
-          >
-            Cancel</button
-          >&nbsp;&nbsp;
-          <!-- <button class="btn btn-default" (click)='logout()'>Logout</button> -->
-          <button mat-raised-button color="accent" type="submit">Update</button
-          >&nbsp;&nbsp;
-        </div>
-        <!--<span *ngIf="createError.length > 0" class="text-danger">{{ createError }}</span>-->
+        <button
+          mat-raised-button
+          color="accent"
+          routerLink="/userContacts"
+          routerLinkActive="active"
+        >
+          Cancel
+        </button>
+        &nbsp;&nbsp;
+        <button mat-raised-button color="accent" type="submit">Update</button>
       </form>
     </div>
   </div>

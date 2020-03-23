@@ -9,15 +9,19 @@ import { ImageUploadService } from '../../services/image-upload.service';
 @Component({
   selector: 'app-user-update',
   templateUrl: './user-update.component.html',
-  styles: [`
-    .buttonRow a{
-      float: left;
-    }
-    .buttonRow button{
-      float: right;
-    }
-
-  `],
+  styles: [
+    `
+      .full {
+        width: 100%;
+      }
+      .half {
+        width: 50%;
+      }
+      .quarter {
+        width: 25%;
+      }
+    `
+  ]
 })
 export class UserUpdateComponent implements OnInit {
   user: User;
