@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Events } from '../../classes/events';
 import { EventService } from '../../services/event.service';
 import { UserService } from '../../services/user.service';
@@ -35,6 +35,7 @@ export class EventCreateComponent implements OnInit {
   city: String;
   province: String;
   country: String;
+  private: boolean = false;
 
   constructor(
     private em: EventService,
@@ -67,7 +68,7 @@ export class EventCreateComponent implements OnInit {
     this.newEvent.ev_coordinator = this.um.getCurrentUser().user_email;
     this.newEvent.ev_attendees = [];
     this.newEvent.ev_photo = '';
-    this.newEvent.ev_private = false;
+    this.newEvent.ev_private = this.private;
     this.newEvent.ev_invitedUsers = [];
     this.newEvent.ev_address.street = this.street;
     this.newEvent.ev_address.postalCode = this.postalCode;

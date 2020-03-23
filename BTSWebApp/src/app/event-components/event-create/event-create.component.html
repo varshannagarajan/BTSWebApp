@@ -38,6 +38,15 @@
           <mat-option value="sports">Sports</mat-option>
         </mat-select>
       </mat-form-field>
+      &nbsp;&nbsp;&nbsp;
+      <mat-radio-group
+      [(ngModel)]="private"
+      [ngModelOptions]="{ standalone: true }"
+    >
+      <mat-radio-button [value]="true">Private</mat-radio-button>
+      &nbsp;&nbsp;&nbsp;
+      <mat-radio-button [value]="false">Public</mat-radio-button>
+    </mat-radio-group>
       <mat-form-field class="eventInfoFull">
         <mat-label>Description</mat-label>
         <textarea
