@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Events } from '../../classes/events';
 import { Attendee } from '../../classes/attendees';
 import { UserService } from '../../services/user.service';
 import { EventService } from '../../services/event.service';
@@ -13,6 +12,7 @@ export class EventJoinComponent implements OnInit {
   newAttendee: Attendee;
   eventCode: String;
   eventID: String;
+
   constructor(private u: UserService, private e: EventService, private router: Router) {
     this.newAttendee = new Attendee();
     this.eventCode = '';
