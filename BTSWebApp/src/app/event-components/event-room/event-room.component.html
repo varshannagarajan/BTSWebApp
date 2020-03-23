@@ -1,45 +1,48 @@
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-9" *ngIf="event">
-    <google-map *ngIf="center"
-      height="400px"
-      width="100%" 
-      [center]="center">
-
-      <map-marker
-        #markerElem
-        *ngFor="let marker of markers"
-          [position]="marker.position"
-          [label]="marker.label"
-          [title]="marker.title"
-          [options]="marker.options"
-          (mapClick)="openMarkerInfo(markerElem, marker.info)">
-      </map-marker>
-      <map-info-window>{{ infoContent }}</map-info-window>
-    </google-map>
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>
-          {{ event.ev_name }} (Event ID: {{ event._id }})
-          <button *ngIf="checkIfUserIsCoordinator()" mat-raised-button color="accent" [routerLink]="['/eventUpdate', event._id]" routerLinkActive="active">Edit</button>
-        </mat-card-title>
-        <mat-card-subtitle>
-          {{ event.ev_description }}
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>Company: {{ event.ev_company }}</p>
-        <p>
-          Address:
-          {{ event.ev_address.street }}
-          {{ event.ev_address.postalCode }}
-          {{ event.ev_address.city }}
-          {{ event.ev_address.province }}
-          {{ event.ev_address.country }}
-        </p>
-      </mat-card-content>
-    </mat-card>
-    <h4>Attendees</h4>
-    <app-business-exp-panel [userOB]="attendeeUsers"></app-business-exp-panel>
-  </div>
+<div class="col-md-2"></div>
+<div class="col-md-8" *ngIf="event">
+  <google-map *ngIf="center" height="400px" width="100%" [center]="center">
+    <map-marker
+      #markerElem
+      *ngFor="let marker of markers"
+      [position]="marker.position"
+      [label]="marker.label"
+      [title]="marker.title"
+      [options]="marker.options"
+      (mapClick)="openMarkerInfo(markerElem, marker.info)"
+    >
+    </map-marker>
+    <map-info-window>{{ infoContent }}</map-info-window>
+  </google-map>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        {{ event.ev_name }} (Event Code: {{ event.ev_code }})
+        <button
+          *ngIf="checkIfUserIsCoordinator()"
+          mat-raised-button
+          color="accent"
+          [routerLink]="['/eventUpdate', event._id]"
+          routerLinkActive="active"
+        >
+          Edit
+        </button>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ event.ev_description }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Company: {{ event.ev_company }}</p>
+      <p>
+        Address:
+        {{ event.ev_address.street }}
+        {{ event.ev_address.postalCode }}
+        {{ event.ev_address.city }}
+        {{ event.ev_address.province }}
+        {{ event.ev_address.country }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <h4>Attendees</h4>
+  <app-business-exp-panel [userOB]="attendeeUsers"></app-business-exp-panel>
 </div>

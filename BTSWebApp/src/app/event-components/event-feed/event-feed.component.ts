@@ -23,11 +23,6 @@ export class EventFeedComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.m.getCurrentUser();
-    /*
-    this.e.getUsersEvents(this.user.user_email).subscribe(s => {
-      this.userEvents = s;
-    });
-    */
     for (let i = 0; i < this.user.user_eventsList.length; i++) {
       this.e.eventGetByCode(this.user.user_eventsList[i]).subscribe(s => {
         this.userEvents.push(s);
@@ -41,6 +36,6 @@ export class EventFeedComponent implements OnInit {
   }
 
   viewEvent(e: string) {
-    this.router.navigate(['/eventRead/', e]);
+    this.router.navigate(['/eventRoom/', e]);
   }
 }
