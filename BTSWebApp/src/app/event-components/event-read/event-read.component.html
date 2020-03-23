@@ -21,6 +21,7 @@
       <mat-card-header>
         <mat-card-title>
           {{ event.ev_name }} (Event ID: {{ event._id }})
+          <button *ngIf="checkIfUserIsCoordinator()" mat-raised-button color="accent" [routerLink]="['/eventUpdate', event._id]" routerLinkActive="active">Edit</button>
         </mat-card-title>
         <mat-card-subtitle>
           {{ event.ev_description }}
@@ -46,7 +47,7 @@
       <app-business-exp-panel *ngFor="let attendee of attendeeUsers"
       [userOB]="attendee"></app-business-exp-panel>
     </mat-accordion> -->
-    <!-- <app-business-card
+    <!-- <app-business-card 
       *ngFor="let attendee of attendeeUsers"
       [userOB]="attendee"
     ></app-business-card> -->
