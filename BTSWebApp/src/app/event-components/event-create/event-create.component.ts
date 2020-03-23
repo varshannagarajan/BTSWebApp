@@ -10,16 +10,17 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-event-create',
   templateUrl: './event-create.component.html',
-  styles: [`
-  .eventInfo{
-      width:100%;
-  }
+  styles: [
+    `
+      .eventInfo {
+        width: 100%;
+      }
 
-  .eventTime{
-      width:50%;
-  }
-
-  `],
+      .eventTime {
+        width: 50%;
+      }
+    `
+  ]
 })
 export class EventCreateComponent implements OnInit {
   currentUser: User;
@@ -43,51 +44,50 @@ export class EventCreateComponent implements OnInit {
     this.newEvent.ev_name = '';
     this.currentUser = this.um.currentUser;
     this.newEvent.ev_category = [];
-    this.category = "";
+    this.category = '';
     //this.newEvent.ev_date = {start: "", end: ""};
-    this.newEvent.ev_address = new Address;
-    this.newEvent.ev_address.street = "";
-    this.newEvent.ev_address.postalCode = "";
-    this.newEvent.ev_address.city = "";
-    this.newEvent.ev_address.country = "Canada";
+    this.newEvent.ev_address = new Address();
+    this.newEvent.ev_address.street = '';
+    this.newEvent.ev_address.postalCode = '';
+    this.newEvent.ev_address.city = '';
+    this.newEvent.ev_address.country = 'Canada';
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   // Methods
   onSubmit(): void {
     // this.newEvent.ev_coordinator = this.currentUser.user_email;
-    if(this.category != ""){
+    if (this.category != '') {
       this.newEvent.ev_category.push(this.category);
     }
     let newEventCode = this.generateID();
     this.newEvent.ev_code = newEventCode;
-    this.newEvent.ev_date.start = this.startDate;
-    this.newEvent.ev_date.end = this.endDate;
+    // this.newEvent.ev_date.start = this.startDate;
+    // this.newEvent.ev_date.end = this.endDate;
     this.newEvent.ev_coordinator = this.um.getCurrentUser().user_email;
     this.newEvent.ev_attendees = [];
-    this.newEvent.ev_photo = "";
+    this.newEvent.ev_photo = '';
     this.newEvent.ev_private = false;
-    this.newEvent.ev_invitedUsers = []
+    this.newEvent.ev_invitedUsers = [];
     this.newEvent.ev_address.street = this.street;
     this.newEvent.ev_address.postalCode = this.postalCode;
     this.newEvent.ev_address.city = this.city;
     // Change when other countries are added
-    this.newEvent.ev_address.country = "Canada";
-    
+    this.newEvent.ev_address.country = 'Canada';
+
     let newAttendee = new Attendee();
     newAttendee.user_email = this.currentUser.user_email;
     newAttendee.user_firstName = this.currentUser.user_firstName;
     newAttendee.user_lastName = this.currentUser.user_lastName;
     newAttendee.attendee_id = this.generateID();
- 
+
     console.log(this.newEvent);
     this.em.eventsCreate(this.newEvent).subscribe(createdEvent => {
       this.em.eventAddAttendee(newEventCode, newAttendee).subscribe(msg => {
         this.um.addEventToUser(newEventCode).subscribe(s => {
           let eventCode = newEventCode;
-          let urlToRedirectTo = "/eventRead/" + eventCode;
+          let urlToRedirectTo = '/eventRead/' + eventCode;
           this.router.navigateByUrl(urlToRedirectTo);
         });
       });
