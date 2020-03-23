@@ -12,12 +12,14 @@ import { Router } from '@angular/router';
   templateUrl: './event-create.component.html',
   styles: [
     `
-      .eventInfo {
+      .eventInfoFull {
         width: 100%;
       }
-
-      .eventTime {
+      .eventInfoHalf {
         width: 50%;
+      }
+      .eventInfoQuarter {
+        width: 25%;
       }
     `
   ]
@@ -34,6 +36,7 @@ export class EventCreateComponent implements OnInit {
   city: String;
   province: String;
   country: String;
+  private: boolean = false;
 
   constructor(
     private em: EventService,
@@ -57,7 +60,6 @@ export class EventCreateComponent implements OnInit {
 
   // Methods
   onSubmit(): void {
-    // this.newEvent.ev_coordinator = this.currentUser.user_email;
     if (this.category != '') {
       this.newEvent.ev_category.push(this.category);
     }
@@ -68,21 +70,19 @@ export class EventCreateComponent implements OnInit {
     this.newEvent.ev_coordinator = this.um.getCurrentUser().user_email;
     this.newEvent.ev_attendees = [];
     this.newEvent.ev_photo = '';
-    this.newEvent.ev_private = false;
+    this.newEvent.ev_private = this.private;
     this.newEvent.ev_invitedUsers = [];
     this.newEvent.ev_address.street = this.street;
     this.newEvent.ev_address.postalCode = this.postalCode;
     this.newEvent.ev_address.city = this.city;
     // Change when other countries are added
     this.newEvent.ev_address.country = 'Canada';
-
     let newAttendee = new Attendee();
     newAttendee.user_email = this.currentUser.user_email;
     newAttendee.user_firstName = this.currentUser.user_firstName;
     newAttendee.user_lastName = this.currentUser.user_lastName;
     newAttendee.attendee_id = this.generateID();
 
-    console.log(this.newEvent);
     this.em.eventsCreate(this.newEvent).subscribe(createdEvent => {
       this.em.eventAddAttendee(newEventCode, newAttendee).subscribe(msg => {
         this.um.addEventToUser(newEventCode).subscribe(s => {
