@@ -5,29 +5,42 @@
     </div>
     <ul class="nav nav-tabs">
       <li>
-        <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
+        <button mat-button routerLink="/tokenView" routerLinkActive="active">
+          Token
+        </button>
       </li>
       <li>
-        <button mat-button routerLink="/userCreate" routerLinkActive="active">Create Account</button>
+        <button mat-button routerLink="/eventFeed" routerLinkActive="active">
+          Event Feed
+        </button>
       </li>
       <li>
-        <button mat-button routerLink="/eventFeed" routerLinkActive="active">Event Feed</button>
+        <button mat-button routerLink="/userContacts" routerLinkActive="active">
+          User Page
+        </button>
       </li>
       <li>
-        <button mat-button routerLink="/userContacts" routerLinkActive="active">User Page</button>
+        <button
+          mat-button
+          routerLink="/viewAllEvents"
+          routerLinkActive="active"
+        >
+          Search Events
+        </button>
       </li>
       <li>
-          <button mat-button routerLink="/viewAllEvents" routerLinkActive="active">Search Events</button>
+        <button mat-button routerLink="/eventCreate" routerLinkActive="active">
+          Create Event
+        </button>
       </li>
       <li>
-        <button mat-button routerLink="/eventCreate" routerLinkActive="active">Create Event</button>
-    </li>
-      <!--
-      <li><a routerLink="/userCreate" routerLinkActive="active">Create Account</a></li>
-      <li><a routerLink="/eventCreate" routerLinkActive="active">New Event</a></li>
-      -->
+        <button mat-button routerLink="/eventJoin" routerLinkActive="active">
+          Join Event Room
+        </button>
+      </li>
       <li>
-        <button mat-button routerLink="/eventJoin" routerLinkActive="active">Join Event Room</button>
+        <button mat-button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
+        <button mat-button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
       </li>
     </ul>
   </div>
