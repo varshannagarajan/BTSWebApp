@@ -86,9 +86,7 @@ export class EventCreateComponent implements OnInit {
     this.em.eventsCreate(this.newEvent).subscribe(createdEvent => {
       this.em.eventAddAttendee(newEventCode, newAttendee).subscribe(msg => {
         this.um.addEventToUser(newEventCode).subscribe(s => {
-          let eventCode = newEventCode;
-          let urlToRedirectTo = '/eventRead/' + eventCode;
-          this.router.navigateByUrl(urlToRedirectTo);
+          this.router.navigate(['/eventRoom/', createdEvent._id]);
         });
       });
     });
