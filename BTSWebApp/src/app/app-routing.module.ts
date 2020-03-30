@@ -4,7 +4,6 @@ import { EventCreateComponent } from './event-components/event-create/event-crea
 import { EventDeleteComponent } from './event-components/event-delete/event-delete.component';
 import { EventFeedComponent } from './event-components/event-feed/event-feed.component';
 import { EventJoinComponent } from './event-components/event-join/event-join.component';
-import { EventReadComponent } from './event-components/event-read/event-read.component';
 import { EventRoomComponent } from './event-components/event-room/event-room.component';
 import { EventSearchComponent } from './event-components/event-search/event-search.component';
 import { EventUpdateComponent } from './event-components/event-update/event-update.component';
@@ -25,7 +24,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'eventCreate', component: EventCreateComponent },
-  { path: 'eventRead/:_id', component: EventReadComponent },
   { path: 'eventUpdate/:_id', component: EventUpdateComponent },
   { path: 'eventDelete', component: EventDeleteComponent },
   { path: 'eventJoin', component: EventJoinComponent },
