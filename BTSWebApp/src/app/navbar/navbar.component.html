@@ -1,47 +1,50 @@
-<nav class="navbar navbar-default sticky-top" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button mat-button class="navbar-brand" routerLink="">mesh</button>
-    </div>
-    <ul class="nav nav-tabs">
-      <li>
-        <button mat-button routerLink="/tokenView" routerLinkActive="active">
-          Token
-        </button>
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark orange lighten-3" [containerInside]="false">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" routerLink="/" routerLinkActive="active">Mesh</a></mdb-navbar-brand>
+
+    <!-- If logged in -->
+  <links *ngIf="auth.loggedIn">
+
+   
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/" routerLinkActive="active">Home</a>
       </li>
-      <li>
-        <button mat-button routerLink="/eventFeed" routerLinkActive="active">
-          Event Feed
-        </button>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/eventFeed" routerLinkActive="active">Event Feed</a>
       </li>
-      <li>
-        <button mat-button routerLink="/userContacts" routerLinkActive="active">
-          User Page
-        </button>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/userContacts" routerLinkActive="active">User Page</a>
       </li>
-      <li>
-        <button
-          mat-button
-          routerLink="/viewAllEvents"
-          routerLinkActive="active"
-        >
-          Search Events
-        </button>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/eventCreate" routerLinkActive="active">Create Event</a>
       </li>
-      <li>
-        <button mat-button routerLink="/eventCreate" routerLinkActive="active">
-          Create Event
-        </button>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/eventJoin" routerLinkActive="active">Join Event</a>
       </li>
-      <li>
-        <button mat-button routerLink="/eventJoin" routerLinkActive="active">
-          Join Event Room
-        </button>
-      </li>
-      <li>
-        <button mat-button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
-        <button mat-button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/viewAllEvents" routerLinkActive="active">Search Events</a>
       </li>
     </ul>
-  </div>
-</nav>
+  
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect (click)="auth.logout()">Log Out</a>
+      </li>
+    </ul>
+  </links>
+ 
+  <!-- If not logged in -->
+  <links *ngIf="!auth.loggedIn">
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect (click)="auth.login()">Log In</a>
+      </li>
+    </ul>
+  </links>
+
+</mdb-navbar>
+<!--/.Navbar-->
