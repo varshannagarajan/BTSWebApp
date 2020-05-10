@@ -25,5 +25,8 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.u.getCurrentUser();
+    if (this.user.user_email.length > 0) {
+      this.staticAlertClosed = false;
+    }
   }
 }
