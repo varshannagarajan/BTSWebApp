@@ -1,22 +1,21 @@
 <!--Navbar-->
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark orange lighten-3" [containerInside]="false">
-
   <!-- Navbar brand -->
   <mdb-navbar-brand><a class="navbar-brand" routerLink="/" routerLinkActive="active">Mesh</a></mdb-navbar-brand>
-
-    <!-- If logged in -->
+  <!-- If logged in -->
   <links *ngIf="auth.loggedIn">
-
-   
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="/" routerLinkActive="active">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="/eventFeed" routerLinkActive="active">Event Feed</a>
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/userProfile" routerLinkActive="active">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="/userContacts" routerLinkActive="active">User Page</a>
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/userContacts" routerLinkActive="active">Contacts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/eventFeed" routerLinkActive="active">Event Feed</a>
       </li>
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="/eventCreate" routerLinkActive="active">Create Event</a>
@@ -28,7 +27,6 @@
         <a class="nav-link waves-light" mdbWavesEffect routerLink="/viewAllEvents" routerLinkActive="active">Search Events</a>
       </li>
     </ul>
-  
 
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item">
@@ -45,6 +43,4 @@
       </li>
     </ul>
   </links>
-
 </mdb-navbar>
-<!--/.Navbar-->

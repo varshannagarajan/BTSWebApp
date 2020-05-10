@@ -59,6 +59,7 @@ import { UserReadComponent } from './user-components/user-read/user-read.compone
 import { UserUpdateComponent } from './user-components/user-update/user-update.component';
 import { UserCreateComponent } from './user-components/user-create/user-create.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { UserProfileComponent } from './user-components/user-profile/user-profile.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -121,6 +122,7 @@ export class MaterialModule {}
     UserDeleteComponent,
     UserReadComponent,
     UserContactsComponent,
+    UserProfileComponent,
     EventRoomComponent,
     EventJoinComponent,
     EventFeedComponent,
