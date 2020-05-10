@@ -1,5 +1,13 @@
 <div class="col-md-2"></div>
 <div class="col-md-8" *ngIf="user">
+  <ngb-alert
+    *ngIf="staticAlertClosed"
+    (close)="staticAlertClosed = true"
+    routerLink="/userCreate"
+    routerLinkActive="active"
+  >
+    <strong>Warning!</strong> Please enter your profile information!
+  </ngb-alert>
   <div class="userInfo">
     <div class="row">
       <h2>User Profile</h2>
