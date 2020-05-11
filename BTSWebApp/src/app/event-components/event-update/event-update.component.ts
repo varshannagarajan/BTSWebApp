@@ -28,8 +28,7 @@ export class EventUpdateComponent implements OnInit {
 
   onSubmit() {
     this.m.eventsUpdate(this.event).subscribe((data) => {
-      console.log('Event Updated');
-      let urlToRedirectTo = "/eventRead/" + this.event.ev_code;
+      let urlToRedirectTo = '/eventRead/' + this.event.ev_code;
       this.router.navigateByUrl(urlToRedirectTo);
     });
   }
