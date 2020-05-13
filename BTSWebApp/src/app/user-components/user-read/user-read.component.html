@@ -1,18 +1,11 @@
 <div class="col-md-2"></div>
-<div class="col-md-9" *ngIf="viewUser">
-  <div class="container">
-    <div class="table-responsive">
-      <div class="col-md-6">
-        <h4>User Name</h4>
-        <p>{{ viewUser.user_email }}</p>
-        <h4>First Name</h4>
-        <p>{{ viewUser.user_firstName }}</p>
-        <h4>Last Name</h4>
-        <p>{{ viewUser.user_lastName }}</p>
-        <h4>Bio</h4>
-        <p>{{ viewUser.user_bio }}</p>
-      </div>
-    </div>
-  </div>
-  <div class="row"></div>
+<div class="col-md-8" *ngIf="viewUser">
+  <h4>User Name</h4>
+  <p>{{ viewUser.user_email }}</p>
+  <h4>First Name</h4>
+  <p>{{ viewUser.user_firstName }}</p>
+  <h4>Last Name</h4>
+  <p>{{ viewUser.user_lastName }}</p>
+  <h4>Bio</h4>
+  <p>{{ viewUser.user_bio }}</p>
 </div>

@@ -1,48 +1,55 @@
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-8 col-sm-12">
-    <h4>Update Event</h4>
-    <form (ngSubmit)="onSubmit()" #f="ngForm">
-      <!-- Edit to make this an Angular template-driven form -->
-      <div class="form-group">
-        <label class="control-label" for="ev_ID">ID:</label>
-        <input class="form-control" id="ev_ID" name="ev_ID" [(ngModel)]="event._id" />
-      </div>
+<div class="col-md-2"></div>
+<div class="col-md-8 col-sm-12">
+  <h1>Update Event</h1>
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="form-group">
+      <label class="control-label" for="ev_ID">ID:</label>
+      <input
+        class="form-control"
+        id="ev_ID"
+        name="ev_ID"
+        [(ngModel)]="event._id"
+      />
+    </div>
 
-      <div class="form-group">
-        <label class="control-label" for="ev_name">Event Id:</label>
-        <input
-          class="form-control"
-          id="ev_name"
-          name="ev_name"
-          minlength="3"
-          maxlength="30"
-          [(ngModel)]="event.ev_name"
-          required
-          autofocus
-        />
-      </div>
+    <div class="form-group">
+      <label class="control-label" for="ev_name">Event Id:</label>
+      <input
+        class="form-control"
+        id="ev_name"
+        name="ev_name"
+        minlength="3"
+        maxlength="30"
+        [(ngModel)]="event.ev_name"
+        required
+        autofocus
+      />
+    </div>
 
-      <div class="form-group">
-        <label class="control-label" for="ev_company">Company:</label>
-        <input class="form-control" id="ev_company" name="ev_company" [(ngModel)]="event.ev_company" />
-      </div>
+    <div class="form-group">
+      <label class="control-label" for="ev_company">Company:</label>
+      <input
+        class="form-control"
+        id="ev_company"
+        name="ev_company"
+        [(ngModel)]="event.ev_company"
+      />
+    </div>
 
-      <div class="form-group">
-        <label class="control-label" for="ev_description">Description:</label>
-        <input
-          class="form-control"
-          id="ev_description"
-          name="ev_description"
-          [(ngModel)]="event.ev_description"
-        />
-      </div>
+    <div class="form-group">
+      <label class="control-label" for="ev_description">Description:</label>
+      <input
+        class="form-control"
+        id="ev_description"
+        name="ev_description"
+        [(ngModel)]="event.ev_description"
+      />
+    </div>
 
-      <button mat-raised-button color="accent" routerLink="/home">Back to home</button>&nbsp;&nbsp;
-      <!-- <button class="btn btn-default" (click)='logout()'>Logout</button> -->
-      <button mat-raised-button color="accent" type="submit">Update</button>&nbsp;&nbsp;
-
-      <!--<span *ngIf="loginError.length > 0" class="text-danger">{{ loginError }}</span>-->
-    </form>
-  </div>
+    <button mat-raised-button color="accent" routerLink="/home">
+      Back to home</button
+    >&nbsp;&nbsp;
+    <button mat-raised-button color="accent" type="submit">Update</button
+    >&nbsp;&nbsp;
+  </form>
 </div>

@@ -1,0 +1,54 @@
+<div class="col-md-2"></div>
+<div class="col-md-8" *ngIf="user">
+  <ngb-alert
+    *ngIf="staticAlertClosed"
+    (close)="staticAlertClosed = true"
+    routerLink="/userCreate"
+    routerLinkActive="active"
+  >
+    <strong>Warning!</strong> Please enter your profile information!
+  </ngb-alert>
+  <div class="row">
+    <h1>User Profile</h1>
+  </div>
+  <div class="userInfo">
+    <div class="row">
+      <div class="col-md-4">
+        <h4>First Name</h4>
+        <p>{{ user.user_firstName }}</p>
+        <h4>Last Name</h4>
+        <p>{{ user.user_lastName }}</p>
+        <h4>Email Address</h4>
+        <p>{{ user.user_email }}</p>
+        <button
+          mat-raised-button
+          color="accent"
+          routerLink="/userUpdate"
+          routerLinkActive="active"
+        >
+          Edit
+        </button>
+      </div>
+      <div class="col-md-4" *ngIf="user.user_profilePicture">
+        <h4>Logo Photo</h4>
+        <img
+          src="{{ user.user_profilePicture }}"
+          style="border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            width: 150px;"
+        />
+      </div>
+      <div class="col-md-4" *ngIf="user.user_logoPicture">
+        <h4>Profile Photo</h4>
+        <img
+          src="{{ user.user_logoPicture }}"
+          style="border: 1px solid #ddd;
+              border-radius: 4px;
+              padding: 5px;
+              width: 150px;"
+        />
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
 import { AuthGuard } from './services/guard-auth.service';
 import { UserCreateComponent } from './user-components/user-create/user-create.component';
+import { UserProfileComponent } from './user-components/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'userUpdate', component: UserUpdateComponent },
   { path: 'userDelete', component: UserDeleteComponent },
   { path: 'userContacts', component: UserContactsComponent },
+  { path: 'userProfile', component: UserProfileComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'tokenView', component: TokenViewComponent, canActivate: [AuthGuard] },
   { path: 'viewAllEvents', component: EventSearchComponent, canActivate: [AuthGuard] },

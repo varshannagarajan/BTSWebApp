@@ -5,20 +5,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-contacts',
-  templateUrl: './user-contacts.component.html',
-  styles: [`
-    .userInfo{
-      display: flex;
-      justify-content: space-between;
-      align-content: flex-start;
-      flex-flow: row wrap;
-    }
-
-    .userInfo button{
-      height: 30px;
-    }
-
-  `],
+  templateUrl: './user-contacts.component.html'
 })
 export class UserContactsComponent implements OnInit {
   searchBy: string;
@@ -32,17 +19,13 @@ export class UserContactsComponent implements OnInit {
   constructor(
     private m: UserService,
     private router: Router
-  ) {
-    console.log('-----------------------');
-    console.log(this.user);
-
-  }
+  ) {}
 
   ngOnInit() {
     this.user = this.m.getCurrentUser();
     this.getAllUserContacts();
     this.filteredContacts = this.contacts;
-    if(this.user.user_email.length > 0){
+    if (this.user.user_email.length > 0) {
       this.staticAlertClosed = false;
     }
   }
@@ -95,7 +78,7 @@ export class UserContactsComponent implements OnInit {
       }
       case 'company': {
         filteredContacts = this.contacts.filter(
-          contact => contact.user_employmentInfo['organization'] == searchValue
+          contact => contact.user_employmentInfo.organization == searchValue
         );
         break;
       }
@@ -113,7 +96,6 @@ export class UserContactsComponent implements OnInit {
     }
     return filteredContacts;
   }
-
 
   onSubmit(): void {
     // when the search button is clicked
