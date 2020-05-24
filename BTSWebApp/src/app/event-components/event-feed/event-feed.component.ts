@@ -6,6 +6,7 @@ import { EventService } from '../../services/event.service';
 import { Events } from '../../classes/events';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Address } from 'src/app/classes/address';
+import { Attendee } from '../../classes/attendees';
 
 @Component({
   selector: 'app-event-feed',
@@ -15,6 +16,11 @@ export class EventFeedComponent implements OnInit {
   user: User;
   userEvents: Events[];
   term: string;
+  newAttendee: Attendee;
+  eventCode: String;
+  eventID: String;
+  currDate: Date;
+
   constructor(
     private route: ActivatedRoute,
     private m: UserService,
@@ -24,6 +30,10 @@ export class EventFeedComponent implements OnInit {
   ) {
     this.userEvents = new Array();
     this.term = '';
+    this.newAttendee = new Attendee();
+    this.eventCode = '';
+    this.currDate = new Date();
+    console.log(this.currDate);
   }
 
   ngOnInit() {
@@ -60,4 +70,29 @@ export class EventFeedComponent implements OnInit {
         )
     );
   }
+  onSubmit(): void {
+    this.newAttendee.user_email = this.m.currentUser.user_email;
+    this.newAttendee.user_firstName = this.m.currentUser.user_firstName;
+    this.newAttendee.user_lastName = this.m.currentUser.user_lastName;
+    this.newAttendee.attendee_id = this.generateID();
+
+    this.e.eventAddAttendee(this.eventCode, this.newAttendee).subscribe(msg => {
+      this.m.addEventToUser(this.eventCode).subscribe(s => {
+        this.e.eventGetByCode(this.eventCode).subscribe(s => {
+          this.eventID = s._id;
+          this.router.navigate(['/eventRoom/', this.eventID]);
+        });
+      });
+    });
+  }
+
+  generateID(): string {
+    return (
+      Date.now().toString(36) +
+      Math.random()
+        .toString(36)
+        .substr(2, 5)
+    ).toUpperCase();
+  }
+
 }
