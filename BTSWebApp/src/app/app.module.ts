@@ -60,6 +60,7 @@ import { UserUpdateComponent } from './user-components/user-update/user-update.c
 import { UserCreateComponent } from './user-components/user-create/user-create.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -101,7 +102,7 @@ export function tokenGetter() {
     MatExpansionModule,
     MatPaginatorModule
   ],
-  declarations: [AboutUsComponent]
+  declarations: [AboutUsComponent, LandingPageComponent]
 })
 export class MaterialModule {}
 

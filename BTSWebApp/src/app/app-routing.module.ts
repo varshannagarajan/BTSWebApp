@@ -17,6 +17,7 @@ import { UserReadComponent } from './user-components/user-read/user-read.compone
 import { UserUpdateComponent } from './user-components/user-update/user-update.component';
 import { UserCreateComponent } from './user-components/user-create/user-create.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
@@ -25,6 +26,7 @@ import { AuthGuard } from './services/guard-auth.service';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'welcome', component: LandingPageComponent },
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'eventCreate', component: EventCreateComponent },
   { path: 'eventUpdate/:_id', component: EventUpdateComponent },

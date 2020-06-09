@@ -1,0 +1,38 @@
+.cell-container {
+    width: 50%;
+    float: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.holding-business-card {
+    border-radius: 175%;
+    max-height: 45%;
+    max-width: 45%;
+    float: right;
+}
+
+.button {
+    background-color: #f7b64a; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 450%;
+}
+
+h2 {
+    font-size: 400%;
+}
+
+li {
+    font-size: 250%;
+}
