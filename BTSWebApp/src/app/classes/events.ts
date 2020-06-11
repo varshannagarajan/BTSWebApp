@@ -13,8 +13,8 @@ export class Events {
     ev_contact: Contact;
     ev_coordinator: String;
     ev_date: {
-        start: String;
-        end: String;
+        start: Date;
+        end: Date;
     };
     ev_attendees: Attendee[];
     ev_photo: String;

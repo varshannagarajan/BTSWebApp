@@ -66,23 +66,22 @@
     <br />
     <h2>Time</h2>
     <div class="row">
-      <mat-form-field class="eventInfoQuarter">
-        <input
-          matInput
+      <mat-form-field>
+        <input matInput type="datetime-local" 
+          placeholder="Start Date" 
           [(ngModel)]="startDate"
           [ngModelOptions]="{ standalone: true }"
-          type="datetime-local"
-          placeholder="Start time"
-        />
+          required
+        >
       </mat-form-field>
-      <mat-form-field class="eventTime">
-        <input
-          matInput
+
+      <mat-form-field>
+        <input matInput type="datetime-local" 
+          placeholder="End Date" 
           [(ngModel)]="endDate"
           [ngModelOptions]="{ standalone: true }"
-          type="datetime-local"
-          placeholder="End time"
-        />
+          required
+        >
       </mat-form-field>
     </div>
     <br />
