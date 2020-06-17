@@ -1,0 +1,38 @@
+.rounded-corners {
+    border-radius: 175px;
+    box-shadow: 5px 5px 5px #999;
+}
+
+.cell-container {
+    width: 33.3%;
+    float: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.btn {
+    font-size: 300%;
+}
+
+h1 {
+    font-size: 350%;
+}
+
+h2 {
+    font-size: 300%;
+}
+
+h3 {
+    font-size: 250%;
+    color: grey;
+}
+
+h4 {
+    font-size: 200%;
+}
+
+p {
+    font-size: 175%;
+}
