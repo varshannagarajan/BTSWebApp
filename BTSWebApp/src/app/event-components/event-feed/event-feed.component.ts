@@ -13,8 +13,12 @@ import { Address } from 'src/app/classes/address';
 })
 export class EventFeedComponent implements OnInit {
   user: User;
-  userEvents: Events[];
-  term: string;
+  pastEvents: Events[];
+  futureEvents: Events[];
+  futureTerm: string;
+  pastTerm: string;
+  today: Date;
+
   constructor(
     private route: ActivatedRoute,
     private m: UserService,
@@ -22,15 +26,24 @@ export class EventFeedComponent implements OnInit {
     private router: Router,
     private sanitizer: DomSanitizer
   ) {
-    this.userEvents = new Array();
-    this.term = '';
+    this.pastEvents = new Array();
+    this.futureEvents = new Array();
+    this.futureTerm = '';
+    this.pastTerm = '';
+    this.today = new Date();
   }
 
   ngOnInit() {
     this.user = this.m.getCurrentUser();
     for (let i = 0; i < this.user.user_eventsList.length; i++) {
       this.e.eventGetByCode(this.user.user_eventsList[i]).subscribe(s => {
-        this.userEvents.push(s);
+        if (new Date(s.ev_date.end) > this.today){
+          this.futureEvents.push(s);
+        }
+        else{
+          this.pastEvents.push(s);
+        }
+        
       });
     }
   }

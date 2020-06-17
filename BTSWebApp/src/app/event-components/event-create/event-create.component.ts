@@ -29,8 +29,8 @@ export class EventCreateComponent implements OnInit {
   newEvent: Events;
   loginError: string;
   category: String;
-  startDate: String;
-  endDate: String;
+  startDate: any;
+  endDate: any;
   street: String;
   postalCode: String;
   city: String;
@@ -48,7 +48,7 @@ export class EventCreateComponent implements OnInit {
     this.currentUser = this.um.currentUser;
     this.newEvent.ev_category = [];
     this.category = '';
-    //this.newEvent.ev_date = {start: "", end: ""};
+    this.newEvent.ev_date = {start: new Date(), end: new Date()};
     this.newEvent.ev_address = new Address();
     this.newEvent.ev_address.street = '';
     this.newEvent.ev_address.postalCode = '';
@@ -65,8 +65,8 @@ export class EventCreateComponent implements OnInit {
     }
     let newEventCode = this.generateID();
     this.newEvent.ev_code = newEventCode;
-    // this.newEvent.ev_date.start = this.startDate;
-    // this.newEvent.ev_date.end = this.endDate;
+    this.newEvent.ev_date.start = new Date(this.startDate);
+    this.newEvent.ev_date.end = new Date(this.endDate);
     this.newEvent.ev_coordinator = this.um.getCurrentUser().user_email;
     this.newEvent.ev_attendees = [];
     this.newEvent.ev_photo = '';
@@ -75,6 +75,7 @@ export class EventCreateComponent implements OnInit {
     this.newEvent.ev_address.street = this.street;
     this.newEvent.ev_address.postalCode = this.postalCode;
     this.newEvent.ev_address.city = this.city;
+    
     // Change when other countries are added
     this.newEvent.ev_address.country = 'Canada';
     let newAttendee = new Attendee();

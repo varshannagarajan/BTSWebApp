@@ -62,6 +62,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
+
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
@@ -124,6 +125,7 @@ export class MaterialModule {}
     UserDeleteComponent,
     UserReadComponent,
     UserContactsComponent,
+    UserProfileComponent,
     EventRoomComponent,
     EventJoinComponent,
     EventFeedComponent,

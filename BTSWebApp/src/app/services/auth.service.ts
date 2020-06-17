@@ -116,13 +116,11 @@ export class AuthService {
         this.router.navigate([targetRoute]).then(token => {
           this.userProfile$.subscribe(user => {
             this.currUser = user;
-            console.log(this.currUser.email);
-            this.us.reqresUserGetByUsername(this.currUser.email).subscribe(userObj =>{
-              if(userObj == null){
+            this.us.reqresUserGetByUsername(this.currUser.email).subscribe(userObj => {
+              if (userObj == null) {
                 userObj = new User();
               }
               this.us.currentUser = userObj;
-              console.log(userObj);
              }
             );
           });
