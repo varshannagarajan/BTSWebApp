@@ -22,7 +22,6 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
 import { AuthGuard } from './services/guard-auth.service';
-import { UserCreateComponent } from './user-components/user-create/user-create.component';
 import { UserProfileComponent } from './user-components/user-profile/user-profile.component';
 
 const routes: Routes = [

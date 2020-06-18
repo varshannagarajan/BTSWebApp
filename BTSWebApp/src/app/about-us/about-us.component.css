@@ -6,6 +6,7 @@
 .cell-container {
     width: 33.3%;
     float: left;
+    text-align: center;
 }
 
 .center {
